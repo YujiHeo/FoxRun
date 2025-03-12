@@ -11,8 +11,14 @@ public class PlayerCondition : MonoBehaviour
     [SerializeField] float jumpPower;
     public float JumpPower => jumpPower;
 
+    [SerializeField] float invinTime;
+    float lastHurtTime;
+
     public void GetDamage(int _damage)
     {
+        if (Time.time - lastHurtTime > invinTime) return;
+        lastHurtTime = Time.time;
+
         hp -= _damage;
         if (hp == 0)
             Die();

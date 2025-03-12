@@ -12,13 +12,18 @@ public class PlayerController : MonoBehaviour
 
     public Animator anim;
     Rigidbody rigi;
-    Collider collider;
+    BoxCollider collider;
+    Vector3 originCenter, originSize;
+
+    bool running = true;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
         rigi = GetComponent<Rigidbody>();
-        collider = GetComponent<Collider>();
+        collider = GetComponent<BoxCollider>();
+        originCenter = collider.center;
+        originSize = collider.size;
     }
 
     // Start is called before the first frame update
@@ -55,16 +60,31 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.phase != InputActionPhase.Started) return;
+        if (context.phase != InputActionPhase.Started || !running) return;
 
+        running = false;
+
+        collider.center = originCenter + Vector3.up * JumpPower;
+        collider.size = originSize - Vector3.up * originSize.y * 0.5f;
         anim.SetTrigger("Jump");
-        rigi.AddForce(transform.up * JumpPower, ForceMode.Impulse);
     }
 
     public void OnSlide(InputAction.CallbackContext context)
     {
-        if (context.phase != InputActionPhase.Started) return;
+        if (context.phase != InputActionPhase.Started || !running) return;
 
+        running = false;
+
+        collider.center = originCenter - Vector3.up * originCenter.y * 0.5f;
+        collider.size = originSize - Vector3.up * originSize.y * 0.5f;
         anim.SetTrigger("Slide");
+    }
+
+    public void ReturnCollider()
+    {
+        running = true;
+
+        collider.center = originCenter;
+        collider.size = originSize;
     }
 }
