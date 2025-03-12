@@ -9,13 +9,9 @@ public class NewBehaviourScript : MonoBehaviour
     public float roadSpeed;
     private Vector3 moveVec;
 
-    private void Start()
-    {
-        
-    }
 
-    private void FixedUpdate()
+    private void Update()
     {
- 
+        transform.Translate(transform.forward * roadSpeed * Time.deltaTime);
     }
 }
