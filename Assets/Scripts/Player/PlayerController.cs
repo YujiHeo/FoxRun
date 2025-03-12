@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public Animator anim;
     Rigidbody rigi;
-    BoxCollider collider;
+    BoxCollider hitBox;
     Vector3 originCenter, originSize;
 
     bool running = true;
@@ -21,9 +21,9 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rigi = GetComponent<Rigidbody>();
-        collider = GetComponent<BoxCollider>();
-        originCenter = collider.center;
-        originSize = collider.size;
+        hitBox = GetComponent<BoxCollider>();
+        originCenter = hitBox.center;
+        originSize = hitBox.size;
     }
 
     // Start is called before the first frame update
@@ -64,8 +64,8 @@ public class PlayerController : MonoBehaviour
 
         running = false;
 
-        collider.center = originCenter + Vector3.up * JumpPower;
-        collider.size = originSize - Vector3.up * originSize.y * 0.5f;
+        hitBox.center = originCenter + Vector3.up * JumpPower;
+        hitBox.size = originSize - Vector3.up * originSize.y * 0.5f;
         anim.SetTrigger("Jump");
     }
 
@@ -75,8 +75,8 @@ public class PlayerController : MonoBehaviour
 
         running = false;
 
-        collider.center = originCenter - Vector3.up * originCenter.y * 0.5f;
-        collider.size = originSize - Vector3.up * originSize.y * 0.5f;
+        hitBox.center = originCenter - Vector3.up * originCenter.y * 0.5f;
+        hitBox.size = originSize - Vector3.up * originSize.y * 0.5f;
         anim.SetTrigger("Slide");
     }
 
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
     {
         running = true;
 
-        collider.center = originCenter;
-        collider.size = originSize;
+        hitBox.center = originCenter;
+        hitBox.size = originSize;
     }
 }
