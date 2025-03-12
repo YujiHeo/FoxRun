@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public Func<PSTAT> getStat;
     public Action<PSTAT> changeStat;
+    PSTAT stat { get => getStat(); set => changeStat(value); }
 
     public Animator anim;
     Rigidbody rigi;
@@ -28,11 +29,6 @@ public class PlayerController : MonoBehaviour
         hitBox = GetComponent<BoxCollider>();
         originCenter = hitBox.center;
         originSize = hitBox.size;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         curLine = line.Length / 2;
     }
 
@@ -65,9 +61,9 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.phase != InputActionPhase.Started) return;
-        if (!(getStat() != PSTAT.JUMP || getStat() != PSTAT.DEAD)) return;
+        if (stat != PSTAT.JUMP || stat != PSTAT.DEAD) return;
 
-        changeStat(PSTAT.JUMP);
+        stat = PSTAT.JUMP;
 
         hitBox.center = originCenter + Vector3.up * JumpPower;
         hitBox.size = originSize - Vector3.up * originSize.y * 0.5f;
@@ -76,9 +72,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnSlide(InputAction.CallbackContext context)
     {
-        if (context.phase != InputActionPhase.Started || getStat() != PSTAT.RUN) return;
+        if (context.phase != InputActionPhase.Started || stat != PSTAT.RUN) return;
 
-        changeStat(PSTAT.SLIDE);
+        stat = PSTAT.SLIDE;
 
         hitBox.center = originCenter - Vector3.up * originCenter.y * 0.5f;
         hitBox.size = originSize - Vector3.up * originSize.y * 0.5f;
@@ -87,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
     public void ReturnCollider()
     {
-        changeStat(PSTAT.RUN);
+        stat = PSTAT.RUN;
 
         hitBox.center = originCenter;
         hitBox.size = originSize;
