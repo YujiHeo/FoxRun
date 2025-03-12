@@ -6,15 +6,14 @@ public class ItemEffect : MonoBehaviour
 {
     public GameObject itemEffectPrefab;
 
-    public float destroyDelay = 0.1f;
+    public float destroyDelay = 1f; //Hierarchy에 생성된 이펙트가 Destroy 될 때까지의 지연 시간
     private bool isDestroyed;
 
     
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Player") && !isDestroyed)
         {
-
             Player player = collision.GetComponent<Player>();
 
             if (player != null)
