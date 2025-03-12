@@ -17,7 +17,7 @@ public class UISceneCameraControl : MonoBehaviour
     {
         if (cameraAnimator != null)
         {
-            cameraAnimator.SetBool("play", UIManager.Instance.uISceneCameraPlay);
+            cameraAnimator.SetBool("play", UIManager.instance.uISceneCameraPlay);
         }
     }
 }

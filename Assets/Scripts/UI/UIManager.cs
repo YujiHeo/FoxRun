@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
     public bool uISceneCameraPlay = false;
 
     static UIManager _instance;
-    public static UIManager Instance
+    public static UIManager instance
     {
         get
         {
