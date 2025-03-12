@@ -30,7 +30,7 @@ public class RoadMove: MonoBehaviour
     {
         // 가장 마지막 도로 조각의 위치를 기준으로 배치
         Transform lastRoad = roadObject[roadObject.Count - 1];
-        road.position = new Vector3(lastRoad.position.x, lastRoad.position.y, lastRoad.position.z + 20f);
+        road.position = new Vector3(lastRoad.position.x, lastRoad.position.y, lastRoad.position.z + startPositionZ);
 
         // 리스트에서 제거 후 다시 추가하여 순서 유지
         roadObject.Remove(road);
