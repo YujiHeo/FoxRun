@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     Player _player;
     public Player player { get => _player; set => _player = value; }
 
+    public int Score { get; private set; } //아이템 획득시 점수
+
     void Awake()
     {
         if (_instance == null)
@@ -27,5 +29,10 @@ public class GameManager : MonoBehaviour
         }
         else if (_instance != this)
             Destroy(gameObject);
+    }
+
+    public void AddScore(int score)
+    {
+        Score += score; //추후 다양한 변수를 곱해서 점수 관련 아이템 효과 기능구현 가능
     }
 }
