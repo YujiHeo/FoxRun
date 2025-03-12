@@ -30,16 +30,18 @@ public class UIManager : MonoBehaviour
     LobbyUI lobbyUI = null;
     GameUI gameUI = null;
 
-    static UIManager instance;
+    public bool uISceneCameraPlay = false;
+
+    static UIManager _instance;
     public static UIManager Instance
     {
         get
         {
-            if (null == instance)
+            if (null == _instance)
             {
                 return null;
             }
-            return instance;
+            return _instance;
         }
     }
 
@@ -47,14 +49,14 @@ public class UIManager : MonoBehaviour
     {
 
 
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = this;
+            _instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
         else
         {
-            if (instance != this)
+            if (_instance != this)
                 Destroy(this.gameObject);
         }
 
@@ -84,6 +86,13 @@ public class UIManager : MonoBehaviour
     public void OnClickStart() //시작하기를 누른경우
     {
         ChangeState(UIState.Lobby);
+
+        uISceneCameraPlay = true;
+
+        //if (cameraAnimator != null)
+        //{
+        //    cameraAnimator.SetBool("play", true);
+        //}
     }
 
     public void OnClickExit() //게임 종료를 누른 경우
@@ -100,11 +109,29 @@ public class UIManager : MonoBehaviour
     public void OnClickPlay() //게임 플레이 버튼을 누른 경우
     {
         ChangeState(UIState.Game); //타이틀Ui로 복귀
+
+        SceneManager.LoadScene("Test_KGS");
+
     }
 
     public void OnClickPrev() //타이틀로 돌아가기를 누른 경우
     {
         ChangeState(UIState.Title); //GameUI 실행
+
+        uISceneCameraPlay = false;
+
+        //if (cameraAnimator != null)
+        //{
+        //    cameraAnimator.SetBool("play", false);
+        //}
+    }
+
+    //Game 내부
+
+    public void OnClickLobby()
+    {
+        ChangeState(UIState.Lobby);
+        SceneManager.LoadScene("Test_KYH");
     }
 
 }
