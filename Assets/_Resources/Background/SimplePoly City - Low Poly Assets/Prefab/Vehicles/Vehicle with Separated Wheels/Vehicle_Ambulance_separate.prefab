@@ -424,9 +424,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400008}
-  - component: {fileID: -1957937713437466867}
   - component: {fileID: -5379506449485788708}
   - component: {fileID: -4592205075712687802}
+  - component: {fileID: -1957937713437466867}
+  - component: {fileID: -9082356115476587737}
   m_Layer: 0
   m_Name: Vehicle_Ambulance_separate
   m_TagString: Obstacle
@@ -454,19 +455,6 @@ Transform:
   - {fileID: 400000}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1957937713437466867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33af340b7efc1034bab147abb5821b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 50
 --- !u!65 &-5379506449485788708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -486,8 +474,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.3019733, y: 2.8716981, z: 6.707225}
+  m_Center: {x: -0.010756254, y: 1.7103459, z: -0.15405357}
 --- !u!54 &-4592205075712687802
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -515,3 +503,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1957937713437466867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33af340b7efc1034bab147abb5821b48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 50
+--- !u!114 &-9082356115476587737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd106b69250483b4dad352d8aa0a4c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

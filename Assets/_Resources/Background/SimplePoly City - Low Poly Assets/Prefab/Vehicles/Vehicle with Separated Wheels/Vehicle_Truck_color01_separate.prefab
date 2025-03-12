@@ -590,9 +590,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400012}
-  - component: {fileID: 5742763221044364190}
   - component: {fileID: -3926489944706493936}
   - component: {fileID: 4000483417106155199}
+  - component: {fileID: 5742763221044364190}
+  - component: {fileID: 2239562574498597854}
   m_Layer: 0
   m_Name: Vehicle_Truck_color01_separate
   m_TagString: Obstacle
@@ -622,19 +623,6 @@ Transform:
   - {fileID: 400000}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5742763221044364190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33af340b7efc1034bab147abb5821b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 50
 --- !u!65 &-3926489944706493936
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -654,8 +642,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.31801, y: 3.1634784, z: 9.155971}
+  m_Center: {x: 0.008585095, y: 1.9059212, z: 0.11160898}
 --- !u!54 &4000483417106155199
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -683,3 +671,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5742763221044364190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33af340b7efc1034bab147abb5821b48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 50
+--- !u!114 &2239562574498597854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd106b69250483b4dad352d8aa0a4c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
