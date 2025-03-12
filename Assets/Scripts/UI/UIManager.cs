@@ -12,6 +12,16 @@ public enum UIState
     Game, //2
 }
 
+public enum CharacterState
+{
+    Min = -1,
+
+    Character1, //0
+    Character2, //1
+
+    Max //enum CharacterState의 개수
+}
+
 public class UIManager : MonoBehaviour
 {
     UIState currentState = UIState.Title;
@@ -69,5 +79,32 @@ public class UIManager : MonoBehaviour
     }
 
 
+    //Title 내부
+
+    public void OnClickStart() //시작하기를 누른경우
+    {
+        ChangeState(UIState.Lobby);
+    }
+
+    public void OnClickExit() //게임 종료를 누른 경우
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit(); // 어플리케이션 종료
+#endif
+    }
+
+    //Lobby 내부
+
+    public void OnClickPlay() //게임 플레이 버튼을 누른 경우
+    {
+        ChangeState(UIState.Game); //타이틀Ui로 복귀
+    }
+
+    public void OnClickPrev() //타이틀로 돌아가기를 누른 경우
+    {
+        ChangeState(UIState.Title); //GameUI 실행
+    }
 
 }
