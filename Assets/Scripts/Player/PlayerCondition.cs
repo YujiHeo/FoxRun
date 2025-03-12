@@ -25,7 +25,7 @@ public class PlayerCondition : MonoBehaviour
 
         hp -= _damage;
         damageAction?.Invoke();
-        if (hp == 0)
+        if (hp <= 0)
             Die();
     }
 
