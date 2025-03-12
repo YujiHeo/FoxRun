@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.phase != InputActionPhase.Started) return;
-        if (stat != PSTAT.JUMP || stat != PSTAT.DEAD) return;
+        if (stat == PSTAT.JUMP || stat == PSTAT.DEAD) return;
 
         stat = PSTAT.JUMP;
 
