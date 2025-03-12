@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Vector3.Distance(line[curLine].position, transform.position) < 0.1f)
+            transform.position = line[curLine].position;
     }
 
     void FixedUpdate()
@@ -56,6 +58,7 @@ public class PlayerController : MonoBehaviour
         if (context.phase != InputActionPhase.Started) return;
 
         anim.SetTrigger("Jump");
+        rigi.AddForce(transform.up * JumpPower, ForceMode.Impulse);
     }
 
     public void OnSlide(InputAction.CallbackContext context)
@@ -63,6 +66,5 @@ public class PlayerController : MonoBehaviour
         if (context.phase != InputActionPhase.Started) return;
 
         anim.SetTrigger("Slide");
-        rigi.AddForce(transform.up * JumpPower, ForceMode.Impulse);
     }
 }
