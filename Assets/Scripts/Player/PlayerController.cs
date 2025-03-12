@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,15 +8,18 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Transform[] line;
     [SerializeField] int curLine;
-    float Speed => GameManager.instance.player.condition.Speed;
-    float JumpPower => GameManager.instance.player.condition.JumpPower;
+    public Func<float> speed;
+    float Speed => speed();
+    public Func<float> jumpPower;
+    float JumpPower => jumpPower();
+
+    public Func<PSTAT> getStat;
+    public Action<PSTAT> changeStat;
 
     public Animator anim;
     Rigidbody rigi;
     BoxCollider hitBox;
     Vector3 originCenter, originSize;
-
-    bool running = true;
 
     void Awake()
     {
@@ -60,9 +64,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.phase != InputActionPhase.Started || !running) return;
+        if (context.phase != InputActionPhase.Started) return;
+        if (!(getStat() != PSTAT.JUMP || getStat() != PSTAT.DEAD)) return;
 
-        running = false;
+        changeStat(PSTAT.JUMP);
 
         hitBox.center = originCenter + Vector3.up * JumpPower;
         hitBox.size = originSize - Vector3.up * originSize.y * 0.5f;
@@ -71,9 +76,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnSlide(InputAction.CallbackContext context)
     {
-        if (context.phase != InputActionPhase.Started || !running) return;
+        if (context.phase != InputActionPhase.Started || getStat() != PSTAT.RUN) return;
 
-        running = false;
+        changeStat(PSTAT.SLIDE);
 
         hitBox.center = originCenter - Vector3.up * originCenter.y * 0.5f;
         hitBox.size = originSize - Vector3.up * originSize.y * 0.5f;
@@ -82,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
     public void ReturnCollider()
     {
-        running = true;
+        changeStat(PSTAT.RUN);
 
         hitBox.center = originCenter;
         hitBox.size = originSize;
