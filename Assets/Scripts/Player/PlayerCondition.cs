@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -14,16 +15,22 @@ public class PlayerCondition : MonoBehaviour
     [SerializeField] float invinTime;
     float lastHurtTime;
 
+    public Action damageAction;
+    public Action deadAction;
+
     public void GetDamage(int _damage)
     {
         if (Time.time - lastHurtTime > invinTime) return;
         lastHurtTime = Time.time;
 
         hp -= _damage;
+        damageAction?.Invoke();
         if (hp == 0)
             Die();
     }
 
     public void Die()
-    { }
+    {
+        deadAction?.Invoke();
+    }
 }
