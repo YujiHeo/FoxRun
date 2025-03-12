@@ -9,13 +9,13 @@ public class ItemEffect : MonoBehaviour
     public float destroyDelay = 0.1f;
     private bool isDestroyed;
 
-    /*
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !isDestroyed)
         {
 
-            PlayerAction player = collision.GetComponent<PlayerAction>();
+            Player player = collision.GetComponent<Player>();
 
             if (player != null)
             {
@@ -38,5 +38,5 @@ public class ItemEffect : MonoBehaviour
         }
         return null;
     }
-    */
+    
 }

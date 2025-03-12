@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Hamburger : Item
 {
-    public int scoreValue;
+    public int scoreValue; //이 아이템 획득 시 얻게되는 점수
 
-    protected override void ApplyEffect(/*player매개변수*/)
+    protected override void ApplyEffect(Player player)
     {
-        /*
-        AddScore(scoreValue);
-         */
+        Debug.Log($"{scoreValue}점 획득!!");
+        GameManager gameManager = gameObject.AddComponent<GameManager>();
+        gameManager.AddScore(scoreValue);    
     }
-
 }

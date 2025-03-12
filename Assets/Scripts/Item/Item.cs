@@ -4,23 +4,24 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
-    public float destroyDelay = 0.1f;
+    public float destroyDelay = 0.1f; //충돌했을 시 아이템 오브젝트가 사라질 때까지의 지연시간
     private bool isDestroyed = false;
 
-    protected abstract void ApplyEffect(/*player매개변수*/);
+    protected abstract void ApplyEffect(Player player);
 
 
     private void OnTriggerEnter(Collider collision)
     {
+        Player player = collision.GetComponent<Player>();
         if (collision.CompareTag("Player") && !isDestroyed)
         {
-            /*
+            
             if(player !=null)
             {
-                ApplyEffect(player)
+                ApplyEffect(player);
                 Destroy(gameObject, destroyDelay);
             }
-            */
+            
         }
     }
 }
