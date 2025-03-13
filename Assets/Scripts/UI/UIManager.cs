@@ -156,7 +156,7 @@ public class UIManager : MonoBehaviour
     {
         ChangeState(UIState.Title); //GameUI 실행
 
-        uISceneCameraPlay = false;
+        uISceneCameraPlay = false; //타이틀씬 카메라 경로 수정용
     }
 
     //Game 내부
