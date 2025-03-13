@@ -9,7 +9,8 @@ public class Hamburger : Item
 
     protected override void ApplyEffect(Player player)
     {
-        GameManager gameManager = gameObject.AddComponent<GameManager>();
-        gameManager.AddScore(scoreValue);    
+
+        GameManager.instance.AddScore(scoreValue);
+
     }
 }

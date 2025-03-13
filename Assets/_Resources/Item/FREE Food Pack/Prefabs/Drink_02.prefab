@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23000013603468358}
   - component: {fileID: 7336271359240969194}
   - component: {fileID: 17026203038006436}
+  - component: {fileID: 7900676402692485859}
   m_Layer: 0
   m_Name: Drink_02
   m_TagString: Untagged
@@ -119,5 +120,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyDelay: 0.1
-  scoreValue: 50
+  scoreValue: 30
   duration: 5
+--- !u!114 &7900676402692485859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011322177112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cca7b92ecfdd34fab818b7b81e0a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemEffectPrefab: {fileID: 8443315704496310910, guid: 6ef35fa36e3a65043b2d800600204bdd, type: 3}
+  destroyDelay: 5

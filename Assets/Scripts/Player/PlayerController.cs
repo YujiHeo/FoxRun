@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     BoxCollider hitBox;
     Vector3 originCenter, originSize;
 
+
+
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -68,6 +70,8 @@ public class PlayerController : MonoBehaviour
         anim.speed = 3.5f / JumpPower;
         rigi.AddForce(Vector3.up * JumpPower, ForceMode.VelocityChange);
         anim.SetTrigger("Jump");
+        AchivementManager.instance.SignAchivement(01);
+        AchivementManager.instance.SignAchivement(02);
     }
 
     public void OnSlide(InputAction.CallbackContext context)
@@ -79,6 +83,7 @@ public class PlayerController : MonoBehaviour
         hitBox.center = originCenter - Vector3.up * originCenter.y * 0.5f;
         hitBox.size = originSize - Vector3.up * originSize.y * 0.5f;
         anim.SetTrigger("Slide");
+        AchivementManager.instance.SignAchivement(03);
     }
 
     public void ReturnCollider()
