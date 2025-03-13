@@ -30,12 +30,18 @@ public class AchivementManager : MonoBehaviour
             return;
         }
         achivs = Resources.LoadAll<AchivData>("Achivements");
+
 #if UNITY_EDITOR
         foreach (var achiv in achivs)
             achiv.ResetAchive();
 #endif
     }
 
+    /// <summary>
+    /// 지정 업적의 달성도를 갱신합니다. 갱신할 타이밍에 해당 함수를 호출해주면 됩니다.
+    /// </summary>
+    /// <param name="idx">갱신할 업적의 번호입니다.</param>
+    /// <param name="addCount">갱신할 수치입니다. 기본값은 1입니다.</param>
     public void SignAchivement(int idx, int addCount = 1)
     {
         achivs[idx].UpdateAchiv(addCount);
