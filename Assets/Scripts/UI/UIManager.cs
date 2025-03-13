@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 using System;
 using System.Collections;
+using UnityEngine.UI;
 
 public enum UIState
 {
@@ -54,6 +55,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+
         if (_instance == null)
         {
             _instance = this;
@@ -80,6 +82,7 @@ public class UIManager : MonoBehaviour
         settingUI?.Init(this);
 
         ChangeState(UIState.Title);
+
     }
 
 
@@ -118,7 +121,32 @@ public class UIManager : MonoBehaviour
     public void OnClickSetting()
     {
         prevState = currentState; //이전 ui가 뭐였는지 기억해줌
+        settingUI.bgmSlider.value = SoundManager.Instance.bgmVolume; //초기 볼륨에 맞게 ui 수정
+        settingUI.sfxSlider.value = SoundManager.Instance.sfxVolume;
+
+        if(SoundManager.Instance.isBGMMute == true) // 브금 뮤트가 켜진 경우
+        {
+            settingUI.bgmMuteButton.GetComponent<Image>().color = Color.gray;
+        }else if(SoundManager.Instance.isBGMMute == false) //브금 뮤트가 꺼진 경우
+        {
+            settingUI.bgmMuteButton.GetComponent<Image>().color = Color.white;
+        }
+
+        if(SoundManager.Instance.isSFXMute == true) //효과음 뮤트가 켜진 경우
+        {
+            settingUI.sfxMuteButton.GetComponent<Image>().color = Color.gray;
+        }
+        else if (SoundManager.Instance.isSFXMute == false) //효과음 뮤트가 꺼진 경우
+        {
+            settingUI.sfxMuteButton.GetComponent<Image>().color = Color.white;
+        }
+
         ChangeState(UIState.Setting);
+    }
+
+    public void PlayUIClickAudio()
+    {
+        SoundManager.Instance.PlaySFX("Abstract1", transform.position);
     }
 
     public void OnClickPlay() //게임 플레이 버튼을 누른 경우
@@ -133,7 +161,7 @@ public class UIManager : MonoBehaviour
     {
         ChangeState(UIState.Title); //GameUI 실행
 
-        uISceneCameraPlay = false;
+        uISceneCameraPlay = false; //타이틀씬 카메라 경로 수정용
     }
 
     //Game 내부
@@ -164,5 +192,18 @@ public class UIManager : MonoBehaviour
     public void OnClickSettingBack()
     {
         ChangeState(prevState);
+    }
+
+    //GameOver 내부
+    public void PlayerDeadUI()
+    {
+        gameOverUI.SetScoreText();
+        ChangeState(UIState.GameOver);
+    }
+
+    public void OnClickGameOverLobby()
+    {
+        ChangeState(UIState.Lobby);
+        SceneManager.LoadScene("Test_KYH");
     }
 }

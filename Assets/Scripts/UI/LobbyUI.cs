@@ -28,15 +28,18 @@ public class LobbyUI : BaseUI
 
     public void OnClickPlayButton() 
     {
+        uiManager.PlayUIClickAudio();
         uiManager.OnClickPlay();
     }
     public void OnClickPrevButton()
     {
+        uiManager.PlayUIClickAudio();
         uiManager.OnClickPrev();
     }
 
     public void OnClickSettingButton()
     {
+        uiManager.PlayUIClickAudio();
         uiManager.OnClickSetting();
     }
 

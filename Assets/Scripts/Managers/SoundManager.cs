@@ -254,6 +254,8 @@ public class SoundManager : MonoBehaviour
                 return bgmClips[0];
             case "HMJ_Test":
                 return bgmClips[1];
+            case "Test_KYH":
+                return bgmClips[1];
             default:
                 return null;
         }
