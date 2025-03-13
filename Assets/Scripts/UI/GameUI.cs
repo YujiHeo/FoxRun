@@ -24,6 +24,7 @@ public class GameUI : BaseUI
 
         testButton.onClick.AddListener(OnClickLobbyButton);
         pauseButton.onClick.AddListener(OnClickPauseButton);
+
     }
 
     public void FixedUpdate() //수시로 HP 정보와 Score 정보 업데이트
@@ -73,19 +74,6 @@ public class GameUI : BaseUI
             } // 모든 hp를 검은색으로 칠해라
         }
 
-
-        switch (GameManager.instance.player.condition.Hp)
-        {
-            case 0:
-                heartImages[0].color = Color.black;
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-        }
     }
 
 }
