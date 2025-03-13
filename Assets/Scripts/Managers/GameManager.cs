@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     static GameManager _instance;
+
+    public int feverTimeScore = 1;
+
     public static GameManager instance
     {
         get
@@ -19,6 +21,9 @@ public class GameManager : MonoBehaviour
     Player _player;
     public Player player { get => _player; set => _player = value; }
 
+    public int Score { get; private set; } //아이템 획득시 점수
+
+
     void Awake()
     {
         if (_instance == null)
@@ -28,21 +33,10 @@ public class GameManager : MonoBehaviour
         }
         else if (_instance != this)
             Destroy(gameObject);
-
-        
     }
 
-    private void Update()
+    public void AddScore(int score)
     {
-        SceneLoad("HMJ_Test");
+        Score += score * feverTimeScore; //추후 다양한 변수를 곱해서 점수 관련 아이템 효과 기능구현 가능
     }
-
-    private void SceneLoad(string sceneName)
-    {
-        if(Input.GetButtonDown("Jump"))
-        {
-            SceneManager.LoadScene(sceneName);
-            SoundManager.Instance.PlayBGM(sceneName);
-        }   
-    } 
 }

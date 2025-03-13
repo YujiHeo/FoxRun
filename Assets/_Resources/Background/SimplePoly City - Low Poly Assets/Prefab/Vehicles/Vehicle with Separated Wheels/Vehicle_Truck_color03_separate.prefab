@@ -590,9 +590,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400012}
-  - component: {fileID: 3766761990218805347}
   - component: {fileID: -931173767964944175}
   - component: {fileID: -8079439964854312509}
+  - component: {fileID: -7047104822837971469}
+  - component: {fileID: -3996577989509871128}
   m_Layer: 0
   m_Name: Vehicle_Truck_color03_separate
   m_TagString: Obstacle
@@ -622,19 +623,6 @@ Transform:
   - {fileID: 400000}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3766761990218805347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33af340b7efc1034bab147abb5821b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 50
 --- !u!65 &-931173767964944175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -654,8 +642,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.3742485, y: 3.264185, z: 9.176222}
+  m_Center: {x: 0.007861137, y: 1.8710966, z: 0.09434128}
 --- !u!54 &-8079439964854312509
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -683,3 +671,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-7047104822837971469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134b6e7d615f134428e867e3ae9e5646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementData: {fileID: 11400000, guid: 0160b66f759b67a4694913e65f611dce, type: 2}
+--- !u!114 &-3996577989509871128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd106b69250483b4dad352d8aa0a4c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
