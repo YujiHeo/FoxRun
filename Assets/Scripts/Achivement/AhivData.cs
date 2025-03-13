@@ -11,8 +11,14 @@ public class AchivData : ScriptableObject
     [SerializeField] int goalCount;
     [SerializeField] int currnetCount;
 
-    public bool isClear => currnetCount >= goalCount;
-    public string Description => string.Format(description, goalCount);
+    [SerializeField] int level;
+    [SerializeField] int addGoalPerLv;
+
+    public bool isClear => CurrentCount >= GoalCount;
+    public string Name => string.Format(achivName, level + 1);
+    public string Description => string.Format(description, GoalCount);
+    public int GoalCount => goalCount + level * addGoalPerLv;
+    public int CurrentCount => currnetCount;
 
     /// <summary>
     /// 지정된 수치만큼 달성도를 올립니다. 목표수치에 도달하면 업적을 달성시킵니다.
@@ -24,7 +30,10 @@ public class AchivData : ScriptableObject
 
         currnetCount += addCount;
         if (isClear)
-            Debug.Log(achivName + "달성: " + Description);
+        {
+            Debug.Log(Name + "달성: " + Description);
+            level++;
+        }
     }
 
     /// <summary>
@@ -32,6 +41,7 @@ public class AchivData : ScriptableObject
     /// </summary>
     public void ResetAchive()
     {
+        level = 0;
         currnetCount = 0;
     }
 }

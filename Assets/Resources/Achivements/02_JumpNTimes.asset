@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92db397a6450d024e81522ab7088cae5, type: 3}
   m_Name: 02_JumpNTimes
   m_EditorClassIdentifier: 
-  achivName: "\uC810\uD504\uC758 \uB2EC\uC778"
+  achivName: "\uC810\uD504\uC219\uB828({0})"
   description: "\uC810\uD504\uB97C {0}\uD68C \uB6F0\uC5C8\uB2E4."
   icon: {fileID: 0}
-  goalCount: 10
-  currnetCount: 0
+  goalCount: 25
+  currnetCount: 20
+  addGoalPerLv: 5
