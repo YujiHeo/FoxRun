@@ -784,7 +784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3647187534493294270, guid: 017396a7185237c4aa494ab5e9718d35, type: 3}
       propertyPath: jumpPower
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3784143686120531489, guid: 017396a7185237c4aa494ab5e9718d35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
