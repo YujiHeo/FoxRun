@@ -73,6 +73,50 @@ public class SoundManager : MonoBehaviour
 
     #endregion
 
+    #region Sound Setting 외부 클래스 연결
+    // 효과음 실행, 다른 스크립트에서 가져가서 실행(효과음 이름, 위치) 
+    public void PlaySFX(string sfxName, Vector3 position)
+    {
+        if (!sfxDictionary.ContainsKey(sfxName))
+        {
+            Debug.LogWarning($"효과음 이름이 다릅니다. 효과음 이름과 스크립트에서 매개변수명 확인");
+            return;
+        }
+
+        PlaySFX(sfxDictionary[sfxName], position);
+    }
+
+    // BGM Volume 설정 메서드
+    public void SetBGMVolume(float volume)
+    {
+        bgmVolume = Mathf.Clamp01(volume);
+        UpdateVolumes();
+        SaveVolumes();
+    }
+
+    // SFX Volume 설정 메서드
+    public void SetSFXVolume(float volume)
+    {
+        sfxVolume = Mathf.Clamp01(volume);
+        SaveVolumes();
+    }
+
+    // BGM Mute 설정 메서드
+    public void ToggleBGMMute()
+    {
+        isBGMMute = !isBGMMute;
+        UpdateVolumes();
+        SaveMuteSettings();
+    }
+
+    // SFX Mute 설정 메서드
+    public void ToggleSFXMute()
+    {
+        isSFXMute = !isSFXMute;
+        SaveMuteSettings();
+    }
+    #endregion
+
     #region Scene Management
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -224,17 +268,7 @@ public class SoundManager : MonoBehaviour
     #endregion
 
     #region SFX
-    // 효과음 실행, 다른 스크립트에서 가져가서 실행(효과음 이름, 위치) 
-    public void PlaySFX(string sfxName, Vector3 position)
-    {
-        if (!sfxDictionary.ContainsKey(sfxName))
-        {
-            Debug.LogWarning($"효과음 이름이 다릅니다. 효과음 이름과 스크립트에서 매개변수명 확인");
-            return;
-        }
-
-        PlaySFX(sfxDictionary[sfxName], position);
-    }
+    
 
     private void PlaySFX(AudioClip clip, Vector3 position)
     {
@@ -275,35 +309,5 @@ public class SoundManager : MonoBehaviour
     }
     #endregion
 
-    #region Sound Setting 외부 클래스 연결
-    // BGM Volume 설정 메서드
-    public void SetBGMVolume(float volume)
-    {
-        bgmVolume = Mathf.Clamp01(volume);
-        UpdateVolumes();
-        SaveVolumes();
-    }
-
-    // SFX Volume 설정 메서드
-    public void SetSFXVolume(float volume)
-    {
-        sfxVolume = Mathf.Clamp01(volume);
-        SaveVolumes();
-    }
-
-    // BGM Mute 설정 메서드
-    public void ToggleBGMMute()
-    {
-        isBGMMute = !isBGMMute;
-        UpdateVolumes();
-        SaveMuteSettings();
-    }
-
-    // SFX Mute 설정 메서드
-    public void ToggleSFXMute()
-    {
-        isSFXMute = !isSFXMute;
-        SaveMuteSettings();
-    }
-    #endregion
+    
 }
