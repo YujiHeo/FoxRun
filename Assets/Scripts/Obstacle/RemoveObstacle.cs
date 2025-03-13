@@ -6,7 +6,7 @@ public class RemoveObstacle : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Item"))
+        if(collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("ItemTest"))
         {
             Destroy(collision.gameObject);
 

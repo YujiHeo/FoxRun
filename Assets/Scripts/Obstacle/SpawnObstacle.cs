@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnObstacle : MonoBehaviour
@@ -20,7 +22,6 @@ public class SpawnObstacle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         StartCoroutine(SpawnObstacleRoutine());
 
         
@@ -49,6 +50,7 @@ public class SpawnObstacle : MonoBehaviour
         if(number > 50)
         {
             ItemObstacle(obstacle);
+     
         }
         else
         {
