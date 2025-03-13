@@ -25,7 +25,7 @@ public class PlayerCondition : MonoBehaviour
     [Header("DamageInfo")]
     [SerializeField] int maxHp;
     public int MaxHp => maxHp;
-    int hp;
+    [SerializeField] int hp;
     public int Hp => hp;
     [SerializeField] float invinTime;
     float lastHurtTime;
