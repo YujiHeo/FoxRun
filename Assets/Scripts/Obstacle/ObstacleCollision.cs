@@ -9,7 +9,7 @@ public class ObstacleCollision : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
            var player = collision.transform.GetComponent<PlayerCondition>();
-            player.GetDamage(10);
+            player.GetDamage(1);
         }
     }
 
