@@ -57,6 +57,28 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "bb1ed4a9-653b-4393-89de-da48c7a5d7e1",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e9dbf44-6ce1-4c77-acd2-590d6eb22f3c",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "2D Vector",
                     "id": "64929e65-6c64-41d1-bb65-af368cb92669",
                     "path": "2DVector",

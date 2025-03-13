@@ -4,14 +4,26 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+public enum PSTAT
+{
+    RUN,
+    JUMP,
+    SLIDE,
+    DEAD
+}
+
 public class PlayerCondition : MonoBehaviour
 {
-    [SerializeField] int hp;
+    [Header("MovementInfo")]
     [SerializeField] float speed;
     public float Speed => speed;
     [SerializeField] float jumpPower;
     public float JumpPower => jumpPower;
 
+    public PSTAT stat = PSTAT.RUN;
+
+    [Header("DamageInfo")]
+    [SerializeField] int hp;
     [SerializeField] float invinTime;
     float lastHurtTime;
 
@@ -31,6 +43,7 @@ public class PlayerCondition : MonoBehaviour
 
     public void Die()
     {
+        stat = PSTAT.DEAD;
         deadAction?.Invoke();
     }
 }

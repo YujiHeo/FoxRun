@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,15 +8,19 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Transform[] line;
     [SerializeField] int curLine;
-    float Speed => GameManager.instance.player.condition.Speed;
-    float JumpPower => GameManager.instance.player.condition.JumpPower;
+    public Func<float> speed;
+    float Speed => speed();
+    public Func<float> jumpPower;
+    float JumpPower => jumpPower();
+
+    public Func<PSTAT> getStat;
+    public Action<PSTAT> changeStat;
+    PSTAT stat { get => getStat(); set => changeStat(value); }
 
     public Animator anim;
     Rigidbody rigi;
     BoxCollider hitBox;
     Vector3 originCenter, originSize;
-
-    bool running = true;
 
     void Awake()
     {
@@ -24,11 +29,6 @@ public class PlayerController : MonoBehaviour
         hitBox = GetComponent<BoxCollider>();
         originCenter = hitBox.center;
         originSize = hitBox.size;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         curLine = line.Length / 2;
     }
 
@@ -60,20 +60,21 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.phase != InputActionPhase.Started || !running) return;
+        if (context.phase != InputActionPhase.Started) return;
+        if (stat == PSTAT.JUMP || stat == PSTAT.DEAD) return;
 
-        running = false;
+        stat = PSTAT.JUMP;
 
-        hitBox.center = originCenter + Vector3.up * JumpPower;
-        hitBox.size = originSize - Vector3.up * originSize.y * 0.5f;
+        anim.speed = 3.5f / JumpPower;
+        rigi.AddForce(Vector3.up * JumpPower, ForceMode.VelocityChange);
         anim.SetTrigger("Jump");
     }
 
     public void OnSlide(InputAction.CallbackContext context)
     {
-        if (context.phase != InputActionPhase.Started || !running) return;
+        if (context.phase != InputActionPhase.Started || stat != PSTAT.RUN) return;
 
-        running = false;
+        stat = PSTAT.SLIDE;
 
         hitBox.center = originCenter - Vector3.up * originCenter.y * 0.5f;
         hitBox.size = originSize - Vector3.up * originSize.y * 0.5f;
@@ -82,8 +83,9 @@ public class PlayerController : MonoBehaviour
 
     public void ReturnCollider()
     {
-        running = true;
+        stat = PSTAT.RUN;
 
+        anim.speed = 1;
         hitBox.center = originCenter;
         hitBox.size = originSize;
     }
