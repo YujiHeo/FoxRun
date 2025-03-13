@@ -3761,6 +3761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a786f040be19b84786f025c56f8fde7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   feverTimeScore: 1
 --- !u!4 &857700659
 Transform:
