@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 400010}
   - component: {fileID: -1334785641864786036}
   - component: {fileID: -6789167714981920240}
-  - component: {fileID: 3255756542159056903}
+  - component: {fileID: 1086217247297821563}
   - component: {fileID: 8929488147225935175}
   m_Layer: 0
   m_Name: Vehicle_Car_color02_separate
@@ -503,7 +503,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3255756542159056903
+--- !u!114 &1086217247297821563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -512,10 +512,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 100010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33af340b7efc1034bab147abb5821b48, type: 3}
+  m_Script: {fileID: 11500000, guid: 134b6e7d615f134428e867e3ae9e5646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 50
+  elementData: {fileID: 11400000, guid: 0160b66f759b67a4694913e65f611dce, type: 2}
 --- !u!114 &8929488147225935175
 MonoBehaviour:
   m_ObjectHideFlags: 0
