@@ -23,12 +23,20 @@ public class PlayerCondition : MonoBehaviour
     public PSTAT stat = PSTAT.RUN;
 
     [Header("DamageInfo")]
-    [SerializeField] int hp;
+    [SerializeField] int maxHp;
+    public int MaxHp => maxHp;
+    int hp;
+    public int Hp => hp;
     [SerializeField] float invinTime;
     float lastHurtTime;
 
     public Action damageAction;
     public Action deadAction;
+
+    void Awake()
+    {
+        hp = maxHp;
+    }
 
     public void GetDamage(int _damage)
     {

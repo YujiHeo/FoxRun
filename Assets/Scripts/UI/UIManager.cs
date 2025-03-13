@@ -54,6 +54,7 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+
         if (_instance == null)
         {
             _instance = this;
@@ -80,6 +81,7 @@ public class UIManager : MonoBehaviour
         settingUI?.Init(this);
 
         ChangeState(UIState.Title);
+
     }
 
 
@@ -164,5 +166,18 @@ public class UIManager : MonoBehaviour
     public void OnClickSettingBack()
     {
         ChangeState(prevState);
+    }
+
+    //GameOver ³»ºÎ
+    public void PlayerDeadUI()
+    {
+        gameOverUI.SetScoreText();
+        ChangeState(UIState.GameOver);
+    }
+
+    public void OnClickGameOverLobby()
+    {
+        ChangeState(UIState.Lobby);
+        SceneManager.LoadScene("Test_KYH");
     }
 }
