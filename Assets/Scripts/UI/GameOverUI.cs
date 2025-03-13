@@ -6,7 +6,7 @@ public class GameOverUI : BaseUI
 {
     protected override UIState GetUIState()
     {
-        return UIState.Game;
+        return UIState.GameOver;
     }
 
     public override void Init(UIManager uiManager)

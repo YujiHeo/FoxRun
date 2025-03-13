@@ -19,6 +19,7 @@ public class PauseUI : BaseUI
 
         backButton.onClick.AddListener(OnBackButtonClick);
         lobbyButton.onClick.AddListener(OnLobbyButtonClick);
+        settingButton.onClick.AddListener(OnClickSettingButton);
     }
 
     public void OnBackButtonClick()
@@ -29,6 +30,11 @@ public class PauseUI : BaseUI
     public void OnLobbyButtonClick()
     {
         uiManager.OnClickLobby();
+    }
+
+    public void OnClickSettingButton()
+    {
+        uiManager.OnClickSetting();
     }
 
 }

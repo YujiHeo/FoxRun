@@ -23,6 +23,7 @@ public class LobbyUI : BaseUI
 
         playButton.onClick.AddListener(OnClickPlayButton);
         prevButton.onClick.AddListener(OnClickPrevButton);
+        settingButton.onClick.AddListener(OnClickSettingButton);
     }
 
     public void OnClickPlayButton() 
@@ -32,6 +33,11 @@ public class LobbyUI : BaseUI
     public void OnClickPrevButton()
     {
         uiManager.OnClickPrev();
+    }
+
+    public void OnClickSettingButton()
+    {
+        uiManager.OnClickSetting();
     }
 
 }
