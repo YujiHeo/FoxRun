@@ -26,11 +26,14 @@ public class SettingUI : BaseUI
 
     public void OnClickSettingBackButton()
     {
+        uiManager.PlayUIClickAudio();
         uiManager.OnClickSettingBack();
     }
 
     public void OnClickBgmMuteButton()
     {
+        uiManager.PlayUIClickAudio();
+
         if (SoundManager.Instance.isBGMMute == true) // 브금 뮤트가 켜진 경우
         {
            bgmMuteButton.GetComponent<Image>().color = Color.white;
@@ -45,6 +48,8 @@ public class SettingUI : BaseUI
 
     public void OnClickSfxMuteButton()
     {
+        uiManager.PlayUIClickAudio();
+
         if (SoundManager.Instance.isSFXMute == true) // 브금 뮤트가 켜진 경우
         {
             sfxMuteButton.GetComponent<Image>().color = Color.white;

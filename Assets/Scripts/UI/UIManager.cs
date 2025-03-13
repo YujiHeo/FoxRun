@@ -144,6 +144,11 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.Setting);
     }
 
+    public void PlayUIClickAudio()
+    {
+        SoundManager.Instance.PlaySFX("Abstract1", transform.position);
+    }
+
     public void OnClickPlay() //게임 플레이 버튼을 누른 경우
     {
         ChangeState(UIState.Game); //타이틀Ui로 복귀

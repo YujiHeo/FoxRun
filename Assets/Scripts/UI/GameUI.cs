@@ -35,11 +35,13 @@ public class GameUI : BaseUI
 
     public void OnClickLobbyButton()
     {
+        uiManager.PlayUIClickAudio();
         uiManager.OnClickLobby();
     }
 
     public void OnClickPauseButton()
     {
+        uiManager.PlayUIClickAudio();
         uiManager.OnClickPause();
     }
 
