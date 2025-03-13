@@ -85,14 +85,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadObject:
-  - {fileID: 0}
   - {fileID: 7814698715535707718}
+  - {fileID: 4113750785900877013}
   - {fileID: 2677734467065933930}
   - {fileID: 1559183696618187223}
   - {fileID: 8717789132785865487}
   - {fileID: 4657296184684847746}
   - {fileID: 6040286781406592910}
-  roadSpeed: 50
+  roadData: {fileID: 11400000, guid: 952d7278e4f53dc44af239f6a7c70752, type: 2}
   resetPositionZ: -10
   startPositionZ: 20
 --- !u!1 &2175866086454171974
@@ -104,6 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7841412061132475066}
+  - component: {fileID: 1953143130480396819}
   m_Layer: 0
   m_Name: TestMaps
   m_TagString: Untagged
@@ -129,6 +130,18 @@ Transform:
   - {fileID: 8610677664005993865}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1953143130480396819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2175866086454171974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a50c37c263fce49a43bce647810ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2248683926255885199
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +300,7 @@ MonoBehaviour:
   - {fileID: 189735809365344142}
   - {fileID: 6637386632447119849}
   - {fileID: 1695816579794914943}
-  roadSpeed: 50
+  roadData: {fileID: 11400000, guid: 952d7278e4f53dc44af239f6a7c70752, type: 2}
   resetPositionZ: -10
   startPositionZ: 20
 --- !u!1 &4102650197537705105
@@ -449,7 +462,7 @@ MonoBehaviour:
   - {fileID: 3953594500546118460}
   - {fileID: 1457340492521008768}
   - {fileID: 3577663076254174831}
-  roadSpeed: 50
+  roadData: {fileID: 11400000, guid: 177ca0f639a880c438f87b38961bf557, type: 2}
   resetPositionZ: -30
   startPositionZ: 30
 --- !u!1 &6755346178342798217
