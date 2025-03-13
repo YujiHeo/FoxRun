@@ -425,8 +425,9 @@ GameObject:
   m_Component:
   - component: {fileID: 400008}
   - component: {fileID: -4431264179645722401}
-  - component: {fileID: -9033876189383338990}
   - component: {fileID: -1787969952534152148}
+  - component: {fileID: -6247663215602066617}
+  - component: {fileID: 2885337855890169982}
   m_Layer: 0
   m_Name: Vehicle_SUV_color02_separate
   m_TagString: Obstacle
@@ -473,21 +474,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-9033876189383338990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33af340b7efc1034bab147abb5821b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 50
+  m_Size: {x: 2.865756, y: 2.1886668, z: 5.694483}
+  m_Center: {x: 0.030092001, y: 1.2714221, z: 0.06018591}
 --- !u!54 &-1787969952534152148
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -515,3 +503,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-6247663215602066617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 134b6e7d615f134428e867e3ae9e5646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementData: {fileID: 11400000, guid: 0160b66f759b67a4694913e65f611dce, type: 2}
+--- !u!114 &2885337855890169982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd106b69250483b4dad352d8aa0a4c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

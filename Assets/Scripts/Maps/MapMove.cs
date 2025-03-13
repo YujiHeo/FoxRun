@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class RoadMove: MonoBehaviour
+
+public class MapMove: MonoBehaviour
 {
     public List<Transform> roadObject;
-    public float roadSpeed;
+    public MapElementData roadData;
     public float resetPositionZ = -10f;  // 도로가 이 위치까지 오면 맨 앞으로 이동
     public float startPositionZ = 10f;   // 도로를 맨 앞으로 배치할 위치
 
@@ -15,7 +16,7 @@ public class RoadMove: MonoBehaviour
     {
         for(int i = 0; i < roadObject.Count; i++)
         {
-            roadObject[i].transform.Translate(Vector3.back * roadSpeed * Time.deltaTime);
+            roadObject[i].transform.Translate(Vector3.back * roadData.moveSpeed * Time.deltaTime);
 
             // 특정 위치에 도달하면 맨 앞으로 이동
             if (roadObject[i].position.z <= resetPositionZ)
