@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23000010489745992}
   - component: {fileID: 3553501057838483736}
   - component: {fileID: 6480048407817596645}
+  - component: {fileID: -7958206662426775836}
   m_Layer: 0
   m_Name: Burger
   m_TagString: Untagged
@@ -120,3 +121,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyDelay: 0.1
   scoreValue: 10
+--- !u!114 &-7958206662426775836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011448446114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cca7b92ecfdd34fab818b7b81e0a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemEffectPrefab: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
+  destroyDelay: 5
