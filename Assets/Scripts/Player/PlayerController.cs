@@ -65,8 +65,8 @@ public class PlayerController : MonoBehaviour
 
         stat = PSTAT.JUMP;
 
-        hitBox.center = originCenter + Vector3.up * JumpPower;
-        hitBox.size = originSize - Vector3.up * originSize.y * 0.5f;
+        anim.speed = 3.5f / JumpPower;
+        rigi.AddForce(Vector3.up * JumpPower, ForceMode.VelocityChange);
         anim.SetTrigger("Jump");
     }
 
@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         stat = PSTAT.RUN;
 
+        anim.speed = 1;
         hitBox.center = originCenter;
         hitBox.size = originSize;
     }

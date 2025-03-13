@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
             mainCamera.transform.parent = cameraPoint;
             mainCamera.transform.localPosition = Vector3.zero;
             mainCamera.transform.localRotation = Quaternion.identity;
+            mainCamera.farClipPlane = 100f;
         }
     }
 
