@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
         controller.changeStat = (x) => condition.stat = x;
 
         condition.deadAction += () => controller.anim.SetTrigger("Dead");
+        condition.deadAction += () => UIManager.instance.PlayerDeadUI();
 
         mainCamera = Camera.main;
         if (mainCamera != null && cameraPoint != null)
