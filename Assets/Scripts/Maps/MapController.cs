@@ -23,11 +23,4 @@ public class MapController : MonoBehaviour
         obstalceSpeed.moveSpeed = moveSpeed;
         
     }
-
-
-
-
-
-
-
 }

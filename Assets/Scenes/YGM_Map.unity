@@ -385,6 +385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestMaps
       objectReference: {fileID: 0}
+    - target: {fileID: 2175866086454171974, guid: 589607e9333bca746a75ad13748efd98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7841412061132475066, guid: 589607e9333bca746a75ad13748efd98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1270,7 +1274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!33 &7509158286886304420
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1561,7 +1565,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 223153596}
   - {fileID: 366745507}
+  - {fileID: 1412214170}
   - {fileID: 7633407689290460108}
   - {fileID: 2005404570}
   - {fileID: 796897438}
-  - {fileID: 1412214170}

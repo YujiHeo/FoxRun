@@ -8,7 +8,8 @@ public class ObstacleCollision : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("여우가 차에 치였다");
+           var player = collision.transform.GetComponent<PlayerCondition>();
+            player.GetDamage(10);
         }
     }
 
