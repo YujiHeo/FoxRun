@@ -10,6 +10,8 @@ public enum UIState
     Title, //0
     Lobby, //1
     Game, //2
+    Pause, //3
+    GameOver
 }
 
 public enum CharacterState
@@ -29,6 +31,8 @@ public class UIManager : MonoBehaviour
     TitleUI titleUI = null;
     LobbyUI lobbyUI = null;
     GameUI gameUI = null;
+    PauseUI pauseUI = null;
+    GameOverUI gameOverUI = null;
 
     public bool uISceneCameraPlay = false;
 
@@ -65,6 +69,10 @@ public class UIManager : MonoBehaviour
         lobbyUI?.Init(this);
         gameUI = GetComponentInChildren<GameUI>(true);
         gameUI?.Init(this);
+        pauseUI = GetComponentInChildren<PauseUI>(true);
+        pauseUI?.Init(this);
+        gameOverUI = GetComponentInChildren<GameOverUI>(true);
+        gameOverUI?.Init(this);
 
         ChangeState(UIState.Title);
     }
@@ -76,6 +84,8 @@ public class UIManager : MonoBehaviour
         titleUI?.SetActive(currentState);
         lobbyUI?.SetActive(currentState);
         gameUI?.SetActive(currentState);
+        pauseUI?.SetActive(currentState);
+        gameOverUI?.SetActive(currentState);
     }
 
 
@@ -86,11 +96,6 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.Lobby);
 
         uISceneCameraPlay = true;
-
-        //if (cameraAnimator != null)
-        //{
-        //    cameraAnimator.SetBool("play", true);
-        //}
     }
 
     public void OnClickExit() //게임 종료를 누른 경우
@@ -117,17 +122,27 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.Title); //GameUI 실행
 
         uISceneCameraPlay = false;
-
-        //if (cameraAnimator != null)
-        //{
-        //    cameraAnimator.SetBool("play", false);
-        //}
     }
 
     //Game 내부
+    
+    public void OnClickPause()
+    {
+        Time.timeScale = 0; //일시정지용으로 시간 멈춤
+        ChangeState(UIState.Pause);
+    }
+
+    //Pause 내부
+
+    public void OnClickBack()
+    {
+        Time.timeScale = 1;
+        ChangeState(UIState.Game);
+    }
 
     public void OnClickLobby()
     {
+        Time.timeScale = 1;
         ChangeState(UIState.Lobby);
         SceneManager.LoadScene("Test_KYH");
     }
