@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class RemoveObstacle : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("ItemTest"))
+        if (other.gameObject.CompareTag("Obstacle") || other.gameObject.CompareTag("ItemTest"))
         {
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
 
         }
+
     }
 
 }

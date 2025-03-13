@@ -11,12 +11,15 @@ public class BuildingMove : MonoBehaviour
     public GameObject buildingLeft;
     public BuildingResource buildingResource;
     public MapElementData buildingObject;
+    public float sidePositionX;
+    public int buildingCount;
     public float resetPositionZ = -10f;  // 도로가 이 위치까지 오면 맨 앞으로 이동
     public float startPositionZ = 10f;   // 도로를 맨 앞으로 배치할 위치
+   
 
     private void Start()
     {
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < buildingCount; i++)
         {
             startbuildingRight.Add(buildingResource.GetRandomBuilding());
             startbuildingLeft.Add(buildingResource.GetRandomBuilding());
@@ -25,8 +28,8 @@ public class BuildingMove : MonoBehaviour
 
         for (int i = 0; i < startbuildingRight.Count; i++)
         {
-            Vector3 spawnPositionRight = new Vector3(40, 0, i*20);
-            Vector3 spawnPositionLeft = new Vector3(-40, 0, i * 20);
+            Vector3 spawnPositionRight = new Vector3(sidePositionX, 0, i * startPositionZ);
+            Vector3 spawnPositionLeft = new Vector3(-sidePositionX, 0, i * startPositionZ);
             startbuildingRight[i] = Instantiate(startbuildingRight[i], spawnPositionRight,Quaternion.Euler(0f,-90f,0));
             startbuildingRight[i].transform.SetParent(this.transform);
             startbuildingLeft[i] = Instantiate(startbuildingLeft[i], spawnPositionLeft, Quaternion.Euler(0f,90f,0f));
