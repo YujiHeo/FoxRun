@@ -18,19 +18,23 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    [Header("Volume Settings")]
+    [Range(0f, 1f)] public float bgmVolume = 1f; // BGM 볼륨
+    public bool isBGMMute = false;
+    [Range(0f, 1f)] public float sfxVolume = 1f; // SFX 볼륨
+    public bool isSFXMute = false;
+
     [Header("BGM Settings")]
     public AudioSource bgmSource; // BGM을 재생하는 AudioSource (MainCamera에 AudioSource 컴퍼넌트 추가, BGMPlayer 추가)
     public AudioClip[] bgmClips; // BGM 리스트
-    [Range(0f, 1f)] public float bgmVolume = 1f; // BGM 볼륨
-    [Range(0f, 1f)] public float sfxVolume = 1f; // SFX 볼륨
+
 
     [Header("SFX Settings")]
     public GameObject sfxPrefab; // 효과음 재생을 위한 오브젝트 프리팹
     public int poolSize = 10;    // 오브젝트 풀 크기
     private Queue<AudioSource> sfxPool = new Queue<AudioSource>(); // 오디오 소스를 저장할 큐 (오브젝트 풀링)
-
-    [Header("SFX Clips")]
     public AudioClip[] sfxClips; // 효과음 리스트
+
     private Dictionary<string, AudioClip> sfxDictionary = new Dictionary<string, AudioClip>(); // 효과음을 찾는 딕셔너리
 
     private void Awake()
@@ -49,6 +53,7 @@ public class SoundManager : MonoBehaviour
         LoadSFX();      // SFX 데이터를 딕셔너리에 저장
 
         LoadVolumes();
+        LoadMuteSettings();
     }
     void Start()
     {
@@ -63,6 +68,12 @@ public class SoundManager : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        PlayBGM(scene.name); // 씬 이름에 따라 BGM 자동 재생
     }
 
     // Dictionary에 효과음 파일명으로 Key값 저장
@@ -100,12 +111,24 @@ public class SoundManager : MonoBehaviour
         SaveVolumes();
     }
 
+    public void ToggleBGMMute()
+    {
+        isBGMMute = !isBGMMute;
+        UpdateVolumes();
+        SaveMuteSettings();
+    }
+
+    public void ToggleSFXMute()
+    {
+        isSFXMute = !isSFXMute;
+        SaveMuteSettings();
+    }
     // 볼륨 업데이트 메서드 개선
     public void UpdateVolumes()
     {
         if (bgmSource != null)
         {
-            bgmSource.volume = bgmVolume;
+            bgmSource.volume = isBGMMute ? 0 : bgmVolume;
         }
     }
 
@@ -120,8 +143,22 @@ public class SoundManager : MonoBehaviour
     // 볼륨 로드 메서드
     private void LoadVolumes()
     {
-        bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1);
-        sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1.0f);
+        sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1.0f);
+        UpdateVolumes();
+    }
+
+    private void SaveMuteSettings()
+    {
+        PlayerPrefs.SetInt("BGMMuted", isBGMMute ? 1 : 0);
+        PlayerPrefs.SetInt("SFXMuted", isSFXMute ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    private void LoadMuteSettings()
+    {
+        isBGMMute = PlayerPrefs.GetInt("BGMMuted", 0) == 1;
+        isSFXMute = PlayerPrefs.GetInt("SFXMuted", 0) == 1;
         UpdateVolumes();
     }
 
@@ -181,11 +218,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        PlayBGM(scene.name); // 씬 이름에 따라 BGM 자동 재생
-    }
-
     // 효과음 실행, 다른 스크립트에서 가져가서 실행(효과음 이름, 위치) 
     public void PlaySFX(string sfxName, Vector3 position)
     {
@@ -200,11 +232,14 @@ public class SoundManager : MonoBehaviour
 
     private void PlaySFX(AudioClip clip, Vector3 position)
     {
+        // 음소거 상태라면 재생 안됨
+        if (isSFXMute) return;
+
         AudioSource sfxSource = GetAudioSource(); // 오디오 소스 가져오기
 
         sfxSource.transform.position = position; // 재생 위치 설정
         sfxSource.clip = clip;
-        sfxSource.volume = sfxVolume; // SFX 볼륨 설정
+        sfxSource.volume = isSFXMute ? 0 : sfxVolume; // SFX 볼륨 설정
         sfxSource.gameObject.SetActive(true);
         sfxSource.Play();
 

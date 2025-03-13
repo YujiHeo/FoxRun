@@ -176,7 +176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -113.5, y: -334.33334}
+  m_AnchoredPosition: {x: -33.1, y: -214.7}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &420114046
@@ -1814,12 +1814,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2935a19b2f70d114ea25f957d457ae03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmVolume: 0.482
+  isBGMMute: 0
+  sfxVolume: 0.436
+  isSFXMute: 0
   bgmSource: {fileID: 1718705826}
   bgmClips:
   - {fileID: 8300000, guid: 2cebe5ef59f447d4d803665e3ecf1a2f, type: 3}
   - {fileID: 8300000, guid: 9669960e415ea604d81fb0784634df79, type: 3}
-  bgmVolume: 0.482
-  sfxVolume: 0.436
   sfxPrefab: {fileID: 1755607307090949431, guid: 8aef929a0a2c61444bf637e25a190d00, type: 3}
   poolSize: 10
   sfxClips:
@@ -2120,7 +2122,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -113.5, y: -312.5}
+  m_AnchoredPosition: {x: -33.1, y: -192.86665}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097342649
