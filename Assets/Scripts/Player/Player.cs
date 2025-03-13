@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     Camera mainCamera;
 
-    static bool isFeverTime = false;
+    [SerializeField] public bool isFeverTime = false;
 
     void Awake()
     {
@@ -43,16 +43,11 @@ public class Player : MonoBehaviour
             mainCamera.transform.parent = null;
     }
 
-    public IEnumerator StartFeverTime(float duration)
+    public IEnumerator StartFeverTime(Player player, float duration)
     {
-        isFeverTime = true;
-        GameManager.instance.feverTimeScore = 2;
-        Debug.Log($"피버 타임에 진입했습니다. 플레이어가 얻는 점수는 {GameManager.instance.feverTimeScore}배가 되었습니다.");
-
         yield return new WaitForSeconds(duration);
 
         GameManager.instance.feverTimeScore = 1;
-        isFeverTime = false;
-        Debug.Log($"피버 타임이 끝났습니다. 플레이어가 얻는 점수는 {GameManager.instance.feverTimeScore}배가 되었습니다.");
+        player.isFeverTime = false;
     }
 }

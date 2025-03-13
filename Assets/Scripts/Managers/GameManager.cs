@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     static GameManager _instance;
 
+    public int score;
     public int feverTimeScore = 1;
 
     public static GameManager instance
