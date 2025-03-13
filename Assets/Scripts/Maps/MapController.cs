@@ -7,6 +7,7 @@ using UnityEngine;
 public class MapController : MonoBehaviour
 {
     public MapMove mapmove;
+    public BuildingMove buildingMove;
     public MapElementData obstalceSpeed;
     public SpawnObstacle spawnObstacle;
     public float moveSpeed;
@@ -14,13 +15,13 @@ public class MapController : MonoBehaviour
     private void Awake()
     {
         mapmove = GetComponent<MapMove>();
-        spawnObstacle = GetComponent<SpawnObstacle>();
     }
 
     private void Start()
     {
         mapmove.roadData.moveSpeed = moveSpeed;
         obstalceSpeed.moveSpeed = moveSpeed;
+        buildingMove.buildingObject.moveSpeed = moveSpeed;
         
     }
 }
