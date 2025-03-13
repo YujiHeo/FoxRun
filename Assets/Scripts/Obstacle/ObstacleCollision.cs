@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class ObstacleCollision : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-           var player = collision.transform.GetComponent<PlayerCondition>();
+            Debug.Log("충돌");
+            var player = other.transform.GetComponent<PlayerCondition>();
+            if (player != null) Debug.Log("널 이다");
             player.GetDamage(1);
         }
+
     }
 
 }
