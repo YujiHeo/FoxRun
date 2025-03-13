@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,5 +28,21 @@ public class GameManager : MonoBehaviour
         }
         else if (_instance != this)
             Destroy(gameObject);
+
+        
     }
+
+    private void Update()
+    {
+        SceneLoad("HMJ_Test");
+    }
+
+    private void SceneLoad(string sceneName)
+    {
+        if(Input.GetButtonDown("Jump"))
+        {
+            SceneManager.LoadScene(sceneName);
+            SoundManager.Instance.PlayBGM(sceneName);
+        }   
+    } 
 }

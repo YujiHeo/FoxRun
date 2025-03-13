@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/HMJ_Map.unity
+    guid: c6aa50dd9e4e618418c626eda090c512
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/HMJ_Test.unity
+    guid: 4acf3d969278ead48856c00d78724401
   m_configObjects: {}
