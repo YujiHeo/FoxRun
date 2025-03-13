@@ -10,7 +10,7 @@ public class ObstacleCollision : MonoBehaviour
         {
             Debug.Log("충돌");
             var player = other.transform.GetComponent<PlayerCondition>();
-            if (player != null) Debug.Log("널 이다");
+            if (player != null) Debug.Log("널이 아니다"); 
             player.GetDamage(1);
         }
 

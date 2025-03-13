@@ -40,7 +40,7 @@ public class PlayerCondition : MonoBehaviour
 
     public void GetDamage(int _damage)
     {
-        if (Time.time - lastHurtTime > invinTime) return;
+        if (Time.time - lastHurtTime < invinTime) return;
         lastHurtTime = Time.time;
 
         hp -= _damage;
