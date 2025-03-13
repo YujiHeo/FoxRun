@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
     BoxCollider hitBox;
     Vector3 originCenter, originSize;
 
+
+
     void Awake()
     {
         anim = GetComponent<Animator>();

@@ -10,9 +10,11 @@ public class FeverItem : Item
 
     protected override void ApplyEffect(Player player)
     {
-        GameManager gameManager = gameObject.AddComponent<GameManager>();
-        gameManager.AddScore(scoreValue);
+        player.isFeverTime = true;
 
-        player.StartCoroutine(player.StartFeverTime(duration));
+        GameManager.instance.AddScore(scoreValue);
+        GameManager.instance.feverTimeScore = 2;
+
+        player.StartCoroutine(player.StartFeverTime(player, duration));
     }
 }
