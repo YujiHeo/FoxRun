@@ -8,8 +8,6 @@ using UnityEngine;
 public class MapMove: MonoBehaviour
 {
     public List<Transform> roadObject;
-    public List<Transform> buildingObjectRight;
-    public List<Transform> buildingObjectLeft;
     public MapElementData roadData;
     public float resetPositionZ = -10f;  // 도로가 이 위치까지 오면 맨 앞으로 이동
     public float startPositionZ = 10f;   // 도로를 맨 앞으로 배치할 위치

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8fcb162f107224484a26aa51376c08, type: 3}
   m_Name: BuildingData
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  mapElement: 2
+  moveSpeed: 20
+  mapElementType: 2
