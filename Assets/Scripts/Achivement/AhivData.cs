@@ -5,12 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Achivement", menuName = "AchiveData")]
 public class AchivData : ScriptableObject
 {
-    public string achivName;
-    public string description;
+    [SerializeField] string achivName;
+    [SerializeField] string description;
     public Sprite icon;
-    public int goalCount;
-    public int currnetCount;
-    bool isClear => currnetCount >= goalCount;
+    [SerializeField] int goalCount;
+    [SerializeField] int currnetCount;
+
+    public bool isClear => currnetCount >= goalCount;
+    public string Description => string.Format(description, goalCount);
 
     public void UpdateAchiv(int addCount)
     {
@@ -18,6 +20,11 @@ public class AchivData : ScriptableObject
 
         currnetCount += addCount;
         if (isClear)
-            Debug.Log(achivName + "含失");
+            Debug.Log(achivName + "含失: " + Description);
+    }
+
+    public void ResetAchive()
+    {
+        currnetCount = 0;
     }
 }

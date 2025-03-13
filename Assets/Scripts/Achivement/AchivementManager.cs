@@ -32,11 +32,11 @@ public class AchivementManager : MonoBehaviour
         achivs = Resources.LoadAll<AchivData>("Achivements");
 #if UNITY_EDITOR
         foreach (var achiv in achivs)
-            achiv.currnetCount = 0;
+            achiv.ResetAchive();
 #endif
     }
 
-    public void SignAchivement(int idx, int addCount)
+    public void SignAchivement(int idx, int addCount = 1)
     {
         achivs[idx].UpdateAchiv(addCount);
     }
