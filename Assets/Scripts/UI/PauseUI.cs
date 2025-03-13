@@ -3,36 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LobbyUI : BaseUI
+public class PauseUI : BaseUI
 {
-
-    public Button playButton;
+    public Button backButton;
     public Button settingButton;
-    public Button achievementButton;
-    public Button customizeButton;
-    public Button prevButton;
-
+    public Button lobbyButton;
     protected override UIState GetUIState()
     {
-        return UIState.Lobby;
+        return UIState.Pause;
     }
 
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
 
-        playButton.onClick.AddListener(OnClickPlayButton);
-        prevButton.onClick.AddListener(OnClickPrevButton);
+        backButton.onClick.AddListener(OnBackButtonClick);
+        lobbyButton.onClick.AddListener(OnLobbyButtonClick);
         settingButton.onClick.AddListener(OnClickSettingButton);
     }
 
-    public void OnClickPlayButton() 
+    public void OnBackButtonClick()
     {
-        uiManager.OnClickPlay();
+        uiManager.OnClickBack();
     }
-    public void OnClickPrevButton()
+
+    public void OnLobbyButtonClick()
     {
-        uiManager.OnClickPrev();
+        uiManager.OnClickLobby();
     }
 
     public void OnClickSettingButton()
