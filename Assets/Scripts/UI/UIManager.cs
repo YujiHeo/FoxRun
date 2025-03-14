@@ -169,7 +169,7 @@ public class UIManager : MonoBehaviour
     {
         ChangeState(UIState.Game); //타이틀Ui로 복귀
 
-        SceneManager.LoadScene("Test_KGS");
+        SceneManager.LoadScene("YGM_Map");
 
         AchivementManager.instance.SignAchivement(00); //첫플레이 도전과제 달성용
 
