@@ -23,8 +23,8 @@ public class BuildingMove : MonoBehaviour
     {
         for (int i = 0; i < buildingCount; i++)
         {
-            startbuildingRight.Add(buildingResource.GetRandomBuilding("Cherry"));
-            startbuildingLeft.Add(buildingResource.GetRandomBuilding("Cherry"));
+            startbuildingRight.Add(buildingResource.GetRandomBuilding("Natures"));
+            startbuildingLeft.Add(buildingResource.GetRandomBuilding("Natures"));
 
         }
 
