@@ -33,6 +33,10 @@ public class PlayerCondition : MonoBehaviour
     public Action damageAction;
     public Action deadAction;
 
+    [SerializeField] public bool isFeverTime = false;
+    [SerializeField] public bool isInvincibleTime = false;
+    [SerializeField] public static bool isMagnet = false;
+
     void Awake()
     {
         hp = maxHp;
@@ -40,6 +44,11 @@ public class PlayerCondition : MonoBehaviour
 
     public void GetDamage(int _damage)
     {
+        if (isInvincibleTime == true)
+        {
+            return;
+        }
+
         if (Time.time - lastHurtTime < invinTime) return;
         lastHurtTime = Time.time;
 
@@ -53,5 +62,30 @@ public class PlayerCondition : MonoBehaviour
     {
         stat = PSTAT.DEAD;
         deadAction?.Invoke();
+    }
+
+    public IEnumerator StartFeverTime(PlayerCondition player, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        GameManager.instance.feverTimeScore = 1;
+        player.isFeverTime = false;
+    }
+
+    public IEnumerator StartInvincibleTime(PlayerCondition player, float duration)
+    {
+        Debug.Log("무적이 되었습니다!");
+
+        float originalSpeed = speed;
+
+        speed = originalSpeed * 2;
+
+        yield return new WaitForSeconds(duration);
+
+        speed = originalSpeed;
+
+        PlayerCondition.isMagnet = false;
+        player.isInvincibleTime = false;
+        Debug.Log("무적 끝!!");
     }
 }
