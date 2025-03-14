@@ -40,6 +40,8 @@ public class UIManager : MonoBehaviour
     SettingUI settingUI = null;
     AchievementUI achievementUI = null;
 
+    AchievementPopUpUI achievementPopUpUI = null; //UIState로 관리하지 않는 UI임
+
     public bool uISceneCameraPlay = false;
 
     static UIManager _instance;
@@ -84,6 +86,8 @@ public class UIManager : MonoBehaviour
         settingUI?.Init(this);
         achievementUI = GetComponentInChildren<AchievementUI>(true);
         achievementUI?.Init(this);
+        achievementPopUpUI = GetComponentInChildren<AchievementPopUpUI>(true);
+        achievementPopUpUI?.Init(this);
 
         ChangeState(UIState.Title);
 
@@ -100,6 +104,11 @@ public class UIManager : MonoBehaviour
         gameOverUI?.SetActive(currentState);
         settingUI?.SetActive(currentState);
         achievementUI?.SetActive(currentState);
+    }
+
+    public void AchievementClear(string _description)
+    {
+        achievementPopUpUI.AchievementCleared(_description);
     }
 
 

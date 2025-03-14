@@ -32,6 +32,7 @@ public class AchivData : ScriptableObject
         if (isClear)
         {
             Debug.Log(Name + "´Þ¼º: " + Description);
+            UIManager.instance.AchievementClear(Name);
             level++;
         }
     }
