@@ -13,7 +13,7 @@ public class MapController : MonoBehaviour
     public SpawnObstacle spawnObstacle;
     public MeshRenderer[] buildingGround;
     [Range(30, 100)] public float moveSpeed;
-    [Range(0.3f, 1f)] public float spawnGap;
+    [Range(0.1f, 1f)] public float spawnGap;
     [Range(0,1)] public float addmoveSpeed;
 
 
@@ -33,7 +33,7 @@ public class MapController : MonoBehaviour
             moveSpeed += Time.deltaTime * addmoveSpeed;
         }
 
-        if(moveSpeed >= 33f)
+        if(moveSpeed >= 40f)
         {
             for(int i = 0 ; i < buildingGround.Length; i++)
             {

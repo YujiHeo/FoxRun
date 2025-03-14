@@ -11,6 +11,8 @@ public class SpawnObstacle : MonoBehaviour
     public GameObject[] item;
     public List<float> spawnX;
     public float spawnZ = 120f;
+    public float ItemspawnY = 1f;
+    public float obstacleSpawnY = 0;
 
     private float spawnInterval; // 기본 생성 간격
     public float minSpawnInterval = 0.3f; // 최소 생성 간격 (너무 빠르지 않도록 제한)
@@ -47,14 +49,14 @@ public class SpawnObstacle : MonoBehaviour
 
         number = Random.Range(0, 100);
 
-        if(number > 50)
+        if(number > 20)
         {
-            ItemObstacle(obstacle);
+            ItemObstacle(obstacle, obstacleSpawnY);
      
         }
         else
         {
-            ItemObstacle(item);
+            ItemObstacle(item, ItemspawnY);
         }
 
         //    int index = Random.Range(0, obstacle.Length); // 배열에서 랜덤으로 장애물 선택
@@ -69,15 +71,15 @@ public class SpawnObstacle : MonoBehaviour
     }
 
 
-    private void ItemObstacle(GameObject[] select)
+    private void ItemObstacle(GameObject[] _select, float _sapwY)
     {
 
-        int index = Random.Range(0, select.Length); // 배열에서 랜덤으로 선택
+        int index = Random.Range(0, _select.Length); // 배열에서 랜덤으로 선택
         int indexPosition = Random.Range(0, spawnX.Count);
         float _spawnX = spawnX[indexPosition];
 
-        Vector3 spawnPosition = new Vector3(_spawnX, 0, spawnZ);
-        GameObject newObstacle = Instantiate(select[index], spawnPosition, Quaternion.identity);
+        Vector3 spawnPosition = new Vector3(_spawnX, _sapwY, spawnZ);
+        GameObject newObstacle = Instantiate(_select[index], spawnPosition, Quaternion.identity);
 
         newObstacle.transform.SetParent(this.transform);
 

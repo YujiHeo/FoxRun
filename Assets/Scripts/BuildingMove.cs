@@ -17,11 +17,11 @@ public class BuildingMove : MonoBehaviour
     public float resetPositionZ = -10f;  // 도로가 이 위치까지 오면 맨 앞으로 이동
     public float startPositionZ = 10f;   // 도로를 맨 앞으로 배치할 위치
 
-   
+
 
     private void Start()
     {
-        for(int i = 0; i < buildingCount; i++)
+        for (int i = 0; i < buildingCount; i++)
         {
             startbuildingRight.Add(buildingResource.GetRandomBuilding("Natures"));
             startbuildingLeft.Add(buildingResource.GetRandomBuilding("Natures"));
@@ -32,9 +32,9 @@ public class BuildingMove : MonoBehaviour
         {
             Vector3 spawnPositionRight = new Vector3(sidePositionX, 0, i * startPositionZ);
             Vector3 spawnPositionLeft = new Vector3(-sidePositionX, 0, i * startPositionZ);
-            startbuildingRight[i] = Instantiate(startbuildingRight[i], spawnPositionRight,Quaternion.Euler(0f,-90f,0));
+            startbuildingRight[i] = Instantiate(startbuildingRight[i], spawnPositionRight, Quaternion.Euler(0f, -90f, 0));
             startbuildingRight[i].transform.SetParent(this.transform);
-            startbuildingLeft[i] = Instantiate(startbuildingLeft[i], spawnPositionLeft, Quaternion.Euler(0f,90f,0f));
+            startbuildingLeft[i] = Instantiate(startbuildingLeft[i], spawnPositionLeft, Quaternion.Euler(0f, 90f, 0f));
             startbuildingLeft[i].transform.SetParent(this.transform);
         }
 
@@ -58,7 +58,7 @@ public class BuildingMove : MonoBehaviour
 
             if (startbuildingLeft[i].transform.position.z <= resetPositionZ)
             {
-                RepositionBuilding(startbuildingLeft, buildingLeft,i, 90f);
+                RepositionBuilding(startbuildingLeft, buildingLeft, i, 90f);
             }
         }
 
@@ -66,7 +66,7 @@ public class BuildingMove : MonoBehaviour
 
 
 
-    private void RepositionBuilding(List<GameObject> buildingList, GameObject newBuilding ,int index, float angle)
+    private void RepositionBuilding(List<GameObject> buildingList, GameObject newBuilding, int index, float angle)
     {
         // 현재 이동할 건물
         GameObject oldBuilding = buildingList[index];
@@ -76,32 +76,33 @@ public class BuildingMove : MonoBehaviour
 
         if (buildingData.moveSpeed < 40f)
         {
-            newBuilding = Instantiate(buildingResource.GetRandomBuilding("Natures"), newPosition, Quaternion.Euler(0f, angle, 0f));
+            newBuilding = InstantiateBuilding(newPosition, angle, "Natures");
         }
-        else if(buildingData.moveSpeed < 50f)
+        else if (buildingData.moveSpeed < 50f)
         {
-            newBuilding = Instantiate(buildingResource.GetRandomBuilding("House"), newPosition, Quaternion.Euler(0f, angle, 0f));
+            newBuilding = InstantiateBuilding(newPosition, angle, "House");
         }
-        else if(buildingData.moveSpeed < 60f)
+        else if (buildingData.moveSpeed < 60f)
         {
-            newBuilding = Instantiate(buildingResource.GetRandomBuilding("Shop"), newPosition, Quaternion.Euler(0f, angle, 0f));
-        }
-        else if(buildingData.moveSpeed < 90f)
-        {
-            newBuilding = Instantiate(buildingResource.GetRandomBuilding("Building"), newPosition, Quaternion.Euler(0f, angle, 0f));
+            newBuilding = InstantiateBuilding(newPosition, angle, "Shop");
         }
         else
         {
-            newBuilding = Instantiate(buildingResource.GetRandomBuilding("Building"), newPosition, Quaternion.Euler(0f, angle, 0f));
+            newBuilding = InstantiateBuilding(newPosition, angle, "Building");
         }
 
-            newBuilding.transform.SetParent(this.transform);
+        newBuilding.transform.SetParent(this.transform);
 
         // 리스트 순서를 업데이트
         Destroy(oldBuilding);
         buildingList.RemoveAt(index);
         buildingList.Add(newBuilding);
 
+    }
+
+    private GameObject InstantiateBuilding(Vector3 _newPosition, float _angle, string _name)
+    {
+        return Instantiate(buildingResource.GetRandomBuilding(_name), _newPosition, Quaternion.Euler(0f, _angle, 0f));
     }
 
 }

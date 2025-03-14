@@ -15,6 +15,7 @@ public class MapObject : MonoBehaviour
                 this.transform.Translate(Vector3.back * elementData.moveSpeed * Time.deltaTime);
                 break;
             case MapElementType.Building:
+                Debug.Log("이건 빌딩 데이터입니다.");
                 break;
         }
     }
