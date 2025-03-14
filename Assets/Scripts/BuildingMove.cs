@@ -1,32 +1,41 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class BuildingMove : MonoBehaviour
 {
-    public List<GameObject> buildingRight;
-    public List<GameObject> buildingLeft;
+    public List<GameObject> startbuildingRight;
+    public List<GameObject> startbuildingLeft;
+    public GameObject buildingRight;
+    public GameObject buildingLeft;
+    public MapElementData buildingData;
     public BuildingResource buildingResource;
-    public MapElementData buildingObject;
+    public float sidePositionX;
+    public int buildingCount;
     public float resetPositionZ = -10f;  // 도로가 이 위치까지 오면 맨 앞으로 이동
     public float startPositionZ = 10f;   // 도로를 맨 앞으로 배치할 위치
 
+
+
     private void Start()
     {
-        for(int i = 0; i < 6; i++)
+        for (int i = 0; i < buildingCount; i++)
         {
-            buildingRight.Add(buildingResource.GetRandomBuilding());
-            buildingLeft.Add(buildingResource.GetRandomBuilding());
+            startbuildingRight.Add(buildingResource.GetRandomBuilding("Natures"));
+            startbuildingLeft.Add(buildingResource.GetRandomBuilding("Natures"));
 
         }
 
-        for (int i = 0; i < buildingRight.Count; i++)
+        for (int i = 0; i < startbuildingRight.Count; i++)
         {
-            Vector3 spawnPositionRight = new Vector3(40, 0, i*20);
-            Vector3 spawnPositionLeft = new Vector3(-40, 0, i * 20);
-            buildingRight[i] = Instantiate(buildingRight[i], spawnPositionRight,Quaternion.Euler(0f,-90f,0));
-            buildingLeft[i] = Instantiate(buildingLeft[i], spawnPositionLeft, Quaternion.Euler(0f,90f,0f));
+            Vector3 spawnPositionRight = new Vector3(sidePositionX, 0, i * startPositionZ);
+            Vector3 spawnPositionLeft = new Vector3(-sidePositionX, 0, i * startPositionZ);
+            startbuildingRight[i] = Instantiate(startbuildingRight[i], spawnPositionRight, Quaternion.Euler(0f, -90f, 0));
+            startbuildingRight[i].transform.SetParent(this.transform);
+            startbuildingLeft[i] = Instantiate(startbuildingLeft[i], spawnPositionLeft, Quaternion.Euler(0f, 90f, 0f));
+            startbuildingLeft[i].transform.SetParent(this.transform);
         }
 
     }
@@ -34,22 +43,22 @@ public class BuildingMove : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < buildingRight.Count; i++)
+
+        for (int i = 0; i < startbuildingRight.Count; i++)
         {
 
-            buildingRight[i].transform.Translate(Vector3.left * buildingObject.moveSpeed * Time.deltaTime);
-            buildingLeft[i].transform.Translate(Vector3.right * buildingObject.moveSpeed * Time.deltaTime);
+            startbuildingRight[i].transform.Translate(Vector3.left * buildingData.moveSpeed * Time.deltaTime);
+            startbuildingLeft[i].transform.Translate(Vector3.right * buildingData.moveSpeed * Time.deltaTime);
 
             // 특정 위치에 도달하면 맨 앞으로 이동
-            if (buildingRight[i].transform.position.z <= resetPositionZ)
+            if (startbuildingRight[i].transform.position.z <= resetPositionZ)
             {
-                RepositionBuilding(buildingRight, i,-90f);
-
+                RepositionBuilding(startbuildingRight, buildingRight, i, -90f);
             }
 
-            if (buildingLeft[i].transform.position.z <= resetPositionZ)
+            if (startbuildingLeft[i].transform.position.z <= resetPositionZ)
             {
-                RepositionBuilding(buildingLeft, i, 90f);
+                RepositionBuilding(startbuildingLeft, buildingLeft, i, 90f);
             }
         }
 
@@ -57,44 +66,39 @@ public class BuildingMove : MonoBehaviour
 
 
 
-    private void RepositionBuilding(List<GameObject> buildingList, int index, float angle)
+    private void RepositionBuilding(List<GameObject> buildingList, GameObject newBuilding, int index, float angle)
     {
         // 현재 이동할 건물
         GameObject oldBuilding = buildingList[index];
 
-        // 리스트에서 가장 마지막에 있는 오브젝트를 기준으로 새로운 위치 설정
-        Transform lastRoad = buildingList[buildingList.Count - 1].transform;
-        oldBuilding.transform.position = new Vector3(lastRoad.position.x, lastRoad.position.y, lastRoad.position.z + startPositionZ);
+        GameObject lastBuilding = buildingList[buildingList.Count - 1];
+        Vector3 newPosition = new Vector3(lastBuilding.transform.position.x, lastBuilding.transform.position.y, lastBuilding.transform.position.z + startPositionZ);
+
+        if (buildingData.moveSpeed < 40f)
+        {
+            newBuilding = InstantiateBuilding(newPosition, angle, "Natures");
+        }
+        else if (buildingData.moveSpeed < 60f)
+        {
+            newBuilding = InstantiateBuilding(newPosition, angle, "Sky");
+        }
+        else
+        {
+            newBuilding = InstantiateBuilding(newPosition, angle, "Building");
+        }
+
+        newBuilding.transform.SetParent(this.transform);
 
         // 리스트 순서를 업데이트
+        Destroy(oldBuilding);
         buildingList.RemoveAt(index);
-        buildingList.Add(oldBuilding);
+        buildingList.Add(newBuilding);
 
     }
 
+    private GameObject InstantiateBuilding(Vector3 _newPosition, float _angle, string _name)
+    {
+        return Instantiate(buildingResource.GetRandomBuilding(_name), _newPosition, Quaternion.Euler(0f, _angle, 0f));
+    }
 
-
-    //private void RepositionRoad(List<Transform> buildingList, int index)
-    //{
-    //    // 현재 이동할 건물
-    //    Transform oldBuilding = buildingList[index];
-
-    //    // 랜덤한 새로운 건물 가져오기 (Dictionary 사용)
-    //    GameObject newBuildingPrefab = buildingResource.GetRandomBuilding();
-    //    if (newBuildingPrefab == null)
-    //    {
-    //        Debug.LogWarning("BuildingResource에서 랜덤 건물을 가져오지 못했습니다.");
-    //        return;
-    //    }
-
-    //    // 새로운 건물을 기존 위치에 배치
-    //    Transform lastBuilding = buildingList[buildingList.Count - 1];
-    //    Transform newBuilding = Instantiate(newBuildingPrefab, oldBuilding.position, Quaternion.identity).transform;
-    //    newBuilding.position = new Vector3(lastBuilding.position.x, lastBuilding.position.y, lastBuilding.position.z + startPositionZ);
-
-
-    //    // 리스트 업데이트
-    //    Destroy(oldBuilding.gameObject); // 기존 건물 제거
-    //    buildingList[index] = newBuilding;
-    //}
 }

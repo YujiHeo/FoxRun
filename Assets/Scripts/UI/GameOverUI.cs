@@ -16,7 +16,6 @@ public class GameOverUI : BaseUI
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
-
     }
 
     public void SetScoreText()
@@ -26,6 +25,7 @@ public class GameOverUI : BaseUI
 
     public void OnClickGameOverLobbyButton()
     {
+        uiManager.PlayUIClickAudio();
         uiManager.OnClickGameOverLobby();
     }
 

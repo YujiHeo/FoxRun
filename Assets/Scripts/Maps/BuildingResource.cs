@@ -26,12 +26,28 @@ public class BuildingResource : MonoBehaviour
     }
 
     // 랜던 빌딩 가져오는 매서드
-    public GameObject GetRandomBuilding()
+    public GameObject GetRandomBuilding(string filterKeyword)
     {
         if (buildingPrefabs.Count == 0) return null;
 
-        List<string> keys = new List<string>(buildingPrefabs.Keys);
-        string randomKey = keys[Random.Range(0, keys.Count)];
+        // 특정 키워드를 포함하는 프리팹만 리스트에 추가
+        List<string> filteredKeys = new List<string>();
+
+        foreach (var key in buildingPrefabs.Keys)
+        {
+            if (key.Contains(filterKeyword))  
+            {
+                filteredKeys.Add(key);
+            }
+        }
+
+        if (filteredKeys.Count == 0)
+        {
+            Debug.LogWarning($"'{filterKeyword}'를 포함하는 프리팹이 없습니다!");
+            return null;
+        }
+
+        string randomKey = filteredKeys[Random.Range(0, filteredKeys.Count)];
         return buildingPrefabs[randomKey];
     }
 
