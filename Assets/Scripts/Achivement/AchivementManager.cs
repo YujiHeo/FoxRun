@@ -30,11 +30,6 @@ public class AchivementManager : MonoBehaviour
             return;
         }
         achivs = Resources.LoadAll<AchivData>("Achivements");
-
-#if UNITY_EDITOR
-        foreach (var achiv in achivs)
-            achiv.ResetAchive();
-#endif
     }
 
     /// <summary>
@@ -46,4 +41,15 @@ public class AchivementManager : MonoBehaviour
     {
         achivs[idx].UpdateAchiv(addCount);
     }
+
+#if UNITY_EDITOR
+    public void OnGUI()
+    {
+        if (GUILayout.Button("업적\n전체\n초기화", GUILayout.Width(100), GUILayout.Height(100)))
+        {
+            foreach (var achiv in achivs)
+                achiv.ResetAchive();
+        }
+    }
+#endif
 }
