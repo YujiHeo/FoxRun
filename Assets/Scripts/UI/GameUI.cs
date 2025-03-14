@@ -47,7 +47,7 @@ public class GameUI : BaseUI
 
     public void UpdateScoreInfo()
     {
-        scoreText.text = $"Score : {GameManager.instance.score}";
+        scoreText.text = $"Score : {GameManager.instance.Score}";
     }
 
     public void UpdateHpInfo()
