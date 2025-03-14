@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7336271359240969194}
   - component: {fileID: 17026203038006436}
   - component: {fileID: 7900676402692485859}
-  - component: {fileID: 2930577779268031455}
   m_Layer: 0
   m_Name: Drink_02
   m_TagString: Item
@@ -137,17 +136,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemEffectPrefab: {fileID: 8443315704496310910, guid: 6ef35fa36e3a65043b2d800600204bdd, type: 3}
   destroyDelay: 5
---- !u!114 &2930577779268031455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000011322177112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa277958eb29acd4691c4553e16482ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  magnetDistance: 15

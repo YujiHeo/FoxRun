@@ -6,16 +6,16 @@ public class Magnetic : MonoBehaviour
 {
 
     //플레이어가 아니라 아이템을 인식해서 끌어당기게....
-    
+
     public float moveSpeed = 10f;
     public float magnetDistance = 30f;
 
-    private Transform item;
+    private GameObject[] items;
 
 
     void Start()
     {
-        item = GameObject.FindGameObjectWithTag("Item").transform;
+        items = GameObject.FindGameObjectsWithTag("Item");
     }
 
     void Update()
@@ -25,19 +25,17 @@ public class Magnetic : MonoBehaviour
 
     public void ApplyMagnet()
     {
-        if (PlayerCondition.isMagnet == true)
+        foreach (GameObject item in items)
         {
-            float distance = Vector3.Distance(transform.position, item.position);
-
-            if (magnetDistance >= distance)
+            if (PlayerCondition.isMagnet && item != null)
             {
-                transform.position = Vector3.MoveTowards(transform.position, item.position, moveSpeed * Time.deltaTime);
-            }
-        }
+                float distance = Vector3.Distance(transform.position, item.transform.position);
 
-        else
-        {
-            return;
+                if (distance <= magnetDistance)
+                {
+                    item.transform.position = Vector3.MoveTowards(item.transform.position, transform.position, moveSpeed * Time.deltaTime);
+                }
+            }
         }
     }
 }

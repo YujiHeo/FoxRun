@@ -17,6 +17,5 @@ public class InvincibleItem : Item
         GameManager.instance.AddScore(scoreValue);
 
         player.StartCoroutine(player.StartInvincibleTime(player, duration));
-        //코루틴 안에서 player 스피드 상승하게!!
     }
 }
