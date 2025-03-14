@@ -13,7 +13,8 @@ public enum UIState
     Game, //2
     Pause, //3
     GameOver, //4
-    Setting //5
+    Setting, //5
+    Achievement //6
 }
 
 public enum CharacterState
@@ -37,6 +38,7 @@ public class UIManager : MonoBehaviour
     PauseUI pauseUI = null;
     GameOverUI gameOverUI = null;
     SettingUI settingUI = null;
+    AchievementUI achievementUI = null;
 
     public bool uISceneCameraPlay = false;
 
@@ -80,6 +82,8 @@ public class UIManager : MonoBehaviour
         gameOverUI?.Init(this);
         settingUI = GetComponentInChildren<SettingUI>(true);
         settingUI?.Init(this);
+        achievementUI = GetComponentInChildren<AchievementUI>(true);
+        achievementUI?.Init(this);
 
         ChangeState(UIState.Title);
 
@@ -95,6 +99,7 @@ public class UIManager : MonoBehaviour
         pauseUI?.SetActive(currentState);
         gameOverUI?.SetActive(currentState);
         settingUI?.SetActive(currentState);
+        achievementUI?.SetActive(currentState);
     }
 
 
@@ -149,6 +154,8 @@ public class UIManager : MonoBehaviour
         SoundManager.Instance.PlaySFX("Abstract1", transform.position);
     }
 
+    //Lobby 내부
+
     public void OnClickPlay() //게임 플레이 버튼을 누른 경우
     {
         ChangeState(UIState.Game); //타이틀Ui로 복귀
@@ -162,6 +169,11 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.Title); //GameUI 실행
 
         uISceneCameraPlay = false; //타이틀씬 카메라 경로 수정용
+    }
+
+    public void OnClickAchievement()
+    {
+        ChangeState(UIState.Achievement);
     }
 
     //Game 내부
@@ -206,4 +218,12 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.Lobby);
         SceneManager.LoadScene("Test_KYH");
     }
+
+    //Achievement 내부
+
+    public void OnClickAchievementLobby()
+    {
+        ChangeState(UIState.Lobby);
+    }
+
 }

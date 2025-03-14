@@ -24,6 +24,7 @@ public class LobbyUI : BaseUI
         playButton.onClick.AddListener(OnClickPlayButton);
         prevButton.onClick.AddListener(OnClickPrevButton);
         settingButton.onClick.AddListener(OnClickSettingButton);
+        achievementButton.onClick.AddListener(OnClickAchievementButton);
     }
 
     public void OnClickPlayButton() 
@@ -41,6 +42,12 @@ public class LobbyUI : BaseUI
     {
         uiManager.PlayUIClickAudio();
         uiManager.OnClickSetting();
+    }
+
+    public void OnClickAchievementButton()
+    {
+        uiManager.PlayUIClickAudio();
+        uiManager.OnClickAchievement();
     }
 
 }
