@@ -78,13 +78,9 @@ public class BuildingMove : MonoBehaviour
         {
             newBuilding = InstantiateBuilding(newPosition, angle, "Natures");
         }
-        else if (buildingData.moveSpeed < 50f)
-        {
-            newBuilding = InstantiateBuilding(newPosition, angle, "House");
-        }
         else if (buildingData.moveSpeed < 60f)
         {
-            newBuilding = InstantiateBuilding(newPosition, angle, "Shop");
+            newBuilding = InstantiateBuilding(newPosition, angle, "Sky");
         }
         else
         {
