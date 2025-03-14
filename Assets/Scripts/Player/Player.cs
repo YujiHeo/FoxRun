@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
 
     Camera mainCamera;
 
-    [SerializeField] public bool isFeverTime = false;
 
     void Awake()
     {
@@ -41,13 +40,5 @@ public class Player : MonoBehaviour
     {
         if (mainCamera != null)
             mainCamera.transform.parent = null;
-    }
-
-    public IEnumerator StartFeverTime(Player player, float duration)
-    {
-        yield return new WaitForSeconds(duration);
-
-        GameManager.instance.feverTimeScore = 1;
-        player.isFeverTime = false;
     }
 }

@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
-public class FeverItem : Item
+public class InvincibleItem : Item
 {
     public int scoreValue;
     public float duration = 5f;
 
+
     protected override void ApplyEffect(PlayerCondition player)
     {
-        player.isFeverTime = true;
+        player.isInvincibleTime = true;
+        PlayerCondition.isMagnet = true;
+
 
         GameManager.instance.AddScore(scoreValue);
-        GameManager.instance.feverTimeScore = 2;
 
-        player.StartCoroutine(player.StartFeverTime(player, duration));
+        player.StartCoroutine(player.StartInvincibleTime(player, duration));
+        //코루틴 안에서 player 스피드 상승하게!!
     }
 }
