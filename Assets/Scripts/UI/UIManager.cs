@@ -168,10 +168,8 @@ public class UIManager : MonoBehaviour
     public void OnClickPlay() //게임 플레이 버튼을 누른 경우
     {
         ChangeState(UIState.Game); //타이틀Ui로 복귀
-
-        SceneManager.LoadScene("YGM_Map");
-
         AchivementManager.instance.SignAchivement(00); //첫플레이 도전과제 달성용
+        SceneManager.LoadScene("YGM_Map");
 
     }
 
