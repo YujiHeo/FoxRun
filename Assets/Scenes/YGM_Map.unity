@@ -510,30 +510,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
-    - target: {fileID: 6349878632821034350, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
-      propertyPath: item.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6349878632821034350, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
-      propertyPath: item.Array.data[1]
-      value: 
-      objectReference: {fileID: 8676666992077986456, guid: cec8946ae444d824da48f2442197e16d, type: 3}
-    - target: {fileID: 6349878632821034350, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
-      propertyPath: item.Array.data[2]
-      value: 
-      objectReference: {fileID: 6073147330252835817, guid: 4dde044cd5f5596409234fcf45e1bdb9, type: 3}
-    - target: {fileID: 7949289616452102538, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
-      propertyPath: spawnGap
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8879344241950856445, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
-      propertyPath: checkRate
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 2856859115453361986, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
-    - {fileID: 4654769873102294931, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
