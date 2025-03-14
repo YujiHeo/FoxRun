@@ -491,10 +491,10 @@ MonoBehaviour:
   buildingLeft: {fileID: 0}
   buildingData: {fileID: 11400000, guid: 952d7278e4f53dc44af239f6a7c70752, type: 2}
   buildingResource: {fileID: 1667859279140903374}
-  sidePositionX: 12
+  sidePositionX: 15
   buildingCount: 21
   resetPositionZ: -10
-  startPositionZ: 6
+  startPositionZ: 20
 --- !u!1 &3781926450489892457
 GameObject:
   m_ObjectHideFlags: 0

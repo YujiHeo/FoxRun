@@ -333,6 +333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3647187534493294270, guid: 017396a7185237c4aa494ab5e9718d35, type: 3}
+      propertyPath: jumpPower
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6215271474373217111, guid: 017396a7185237c4aa494ab5e9718d35, type: 3}
       propertyPath: line.Array.data[0]
       value: 
@@ -469,24 +473,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4450126474593791380, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
-      propertyPath: buildingCount
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 4450126474593791380, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
-      propertyPath: sidePositionX
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4450126474593791380, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
-      propertyPath: startPositionZ
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 5424966631277430455, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
       propertyPath: m_Name
       value: Map
       objectReference: {fileID: 0}
+    - target: {fileID: 7949289616452102538, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
+      propertyPath: spawnGap
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879344241950856445, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
+      propertyPath: checkRate
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2856859115453361986, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
+    - {fileID: 4654769873102294931, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98e42e0c89dddf24d9a5c04dc224c188, type: 3}
