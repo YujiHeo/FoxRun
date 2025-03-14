@@ -15,7 +15,7 @@ public class AchivementManager : MonoBehaviour
         }
     }
 
-    [SerializeField] AchivData[] achivs;
+    public AchivData[] achivs;
 
     void Awake()
     {

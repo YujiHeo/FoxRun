@@ -162,6 +162,8 @@ public class UIManager : MonoBehaviour
 
         SceneManager.LoadScene("Test_KGS");
 
+        AchivementManager.instance.SignAchivement(00); //첫플레이 도전과제 달성용
+
     }
 
     public void OnClickPrev() //타이틀로 돌아가기를 누른 경우
@@ -173,6 +175,7 @@ public class UIManager : MonoBehaviour
 
     public void OnClickAchievement()
     {
+        achievementUI.UpdateAchievements();
         ChangeState(UIState.Achievement);
     }
 
