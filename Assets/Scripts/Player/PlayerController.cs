@@ -54,6 +54,9 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.phase != InputActionPhase.Started) return;
+        if (rigi.velocity != Vector3.zero) return;
+        if (stat != PSTAT.RUN) return;
+
         Vector2 dir = context.ReadValue<Vector2>();
         int nextLine = curLine + (int)dir.x;
 
