@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
 using System;
 using System.Collections;
+using UnityEngine.UI;
 
 public enum UIState
 {
@@ -12,7 +13,8 @@ public enum UIState
     Game, //2
     Pause, //3
     GameOver, //4
-    Setting //5
+    Setting, //5
+    Achievement //6
 }
 
 public enum CharacterState
@@ -36,6 +38,7 @@ public class UIManager : MonoBehaviour
     PauseUI pauseUI = null;
     GameOverUI gameOverUI = null;
     SettingUI settingUI = null;
+    AchievementUI achievementUI = null;
 
     public bool uISceneCameraPlay = false;
 
@@ -79,6 +82,8 @@ public class UIManager : MonoBehaviour
         gameOverUI?.Init(this);
         settingUI = GetComponentInChildren<SettingUI>(true);
         settingUI?.Init(this);
+        achievementUI = GetComponentInChildren<AchievementUI>(true);
+        achievementUI?.Init(this);
 
         ChangeState(UIState.Title);
 
@@ -94,6 +99,7 @@ public class UIManager : MonoBehaviour
         pauseUI?.SetActive(currentState);
         gameOverUI?.SetActive(currentState);
         settingUI?.SetActive(currentState);
+        achievementUI?.SetActive(currentState);
     }
 
 
@@ -120,8 +126,35 @@ public class UIManager : MonoBehaviour
     public void OnClickSetting()
     {
         prevState = currentState; //이전 ui가 뭐였는지 기억해줌
+        settingUI.bgmSlider.value = SoundManager.Instance.bgmVolume; //초기 볼륨에 맞게 ui 수정
+        settingUI.sfxSlider.value = SoundManager.Instance.sfxVolume;
+
+        if(SoundManager.Instance.isBGMMute == true) // 브금 뮤트가 켜진 경우
+        {
+            settingUI.bgmMuteButton.GetComponent<Image>().color = Color.gray;
+        }else if(SoundManager.Instance.isBGMMute == false) //브금 뮤트가 꺼진 경우
+        {
+            settingUI.bgmMuteButton.GetComponent<Image>().color = Color.white;
+        }
+
+        if(SoundManager.Instance.isSFXMute == true) //효과음 뮤트가 켜진 경우
+        {
+            settingUI.sfxMuteButton.GetComponent<Image>().color = Color.gray;
+        }
+        else if (SoundManager.Instance.isSFXMute == false) //효과음 뮤트가 꺼진 경우
+        {
+            settingUI.sfxMuteButton.GetComponent<Image>().color = Color.white;
+        }
+
         ChangeState(UIState.Setting);
     }
+
+    public void PlayUIClickAudio()
+    {
+        SoundManager.Instance.PlaySFX("Abstract1", transform.position);
+    }
+
+    //Lobby 내부
 
     public void OnClickPlay() //게임 플레이 버튼을 누른 경우
     {
@@ -129,13 +162,21 @@ public class UIManager : MonoBehaviour
 
         SceneManager.LoadScene("Test_KGS");
 
+        AchivementManager.instance.SignAchivement(00); //첫플레이 도전과제 달성용
+
     }
 
     public void OnClickPrev() //타이틀로 돌아가기를 누른 경우
     {
         ChangeState(UIState.Title); //GameUI 실행
 
-        uISceneCameraPlay = false;
+        uISceneCameraPlay = false; //타이틀씬 카메라 경로 수정용
+    }
+
+    public void OnClickAchievement()
+    {
+        achievementUI.UpdateAchievements();
+        ChangeState(UIState.Achievement);
     }
 
     //Game 내부
@@ -180,4 +221,12 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.Lobby);
         SceneManager.LoadScene("Test_KYH");
     }
+
+    //Achievement 내부
+
+    public void OnClickAchievementLobby()
+    {
+        ChangeState(UIState.Lobby);
+    }
+
 }
