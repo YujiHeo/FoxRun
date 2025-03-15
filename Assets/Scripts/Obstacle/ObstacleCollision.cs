@@ -9,6 +9,12 @@ public class ObstacleCollision : MonoBehaviour
     public int blinkCount = 3; // ±ôºıÀÌ´Â È½¼ö
     private Coroutine blinkCoroutine; // ±ôºıÀÌ±â ÄÚ·çÆ¾ ÀúÀå
     private Color blinkColor = Color.red;
+    private Rigidbody rigidbody;
+
+    private void Start()
+    {
+        rigidbody = transform.GetComponent<Rigidbody>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -16,6 +22,7 @@ public class ObstacleCollision : MonoBehaviour
             var player = other.transform.GetComponent<Player>();
             Renderer playerRenderer = player.GetComponentInChildren<Renderer>();
             playerRenderer.material.color = blinkColor;
+            //MapManager.Instance.mapControllerTest.movingObstacles.ReleaseObject(gameObject);
             player.condition.GetDamage(1);
         }
 

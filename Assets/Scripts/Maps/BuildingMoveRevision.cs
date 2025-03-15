@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BuildingMoveRevision : MonoBehaviour
@@ -9,11 +10,13 @@ public class BuildingMoveRevision : MonoBehaviour
     public GameObject buildingRight; // 새로운 오른쪽 오브젝트
     public GameObject buildingLeft; // 새로운 왼쪽 오브젝트
     public MapElementData buildingData;
-    public BuildingResourceRevision resourceRevision;
+    public MapsObjectResource resourceRevision;
     public float sidePositionX;
     public int buildingCount;
     public float resetPositionZ = -10f;  // 도로가 이 위치까지 오면 맨 앞으로 이동
     public float startPositionZ = 10f;   // 도로를 맨 앞으로 배치할 위치
+
+    private List<GameObject> inactiveBuilding = new List<GameObject>(); // 활성화된 빌딩 리스트
 
 
 
@@ -21,9 +24,9 @@ public class BuildingMoveRevision : MonoBehaviour
     {
         for (int i = 0; i < buildingCount; i++)
         {
-            startbuildingRight.Add(resourceRevision.GetRandomBuildingFromChildren("Building"));
+            startbuildingRight.Add(resourceRevision.GetRandomObjectFromChildren("Building"));
             startbuildingRight[i].transform.SetParent(this.transform);
-            startbuildingLeft.Add(resourceRevision.GetRandomBuildingFromChildren("Building"));
+            startbuildingLeft.Add(resourceRevision.GetRandomObjectFromChildren("Building"));
             startbuildingLeft[i].transform.SetParent(this.transform);
 
         }
@@ -75,6 +78,7 @@ public class BuildingMoveRevision : MonoBehaviour
 
     private void RepositionBuilding(List<GameObject> _buildingList, GameObject _newBuilding, int _index, float _angle)
     {
+        inactiveBuilding.Clear();
         // 현재 앞에 위치한 건물
         GameObject oldBuilding = _buildingList[_index];
         
@@ -82,15 +86,35 @@ public class BuildingMoveRevision : MonoBehaviour
         GameObject lastBuilding = _buildingList[_buildingList.Count - 1];
         Vector3 newPosition = new Vector3(lastBuilding.transform.position.x, lastBuilding.transform.position.y, lastBuilding.transform.position.z + startPositionZ);
 
-        _newBuilding = InstantiateBuilding("Building");
+
+        // 비활성화된 빌딩 리스트 찾아오기
+        foreach (Transform ob in this.transform)
+        {
+            if (!ob.gameObject.activeSelf)
+            {
+                inactiveBuilding.Add(ob.gameObject);
+            }
+        }
+
+        if(inactiveBuilding.Count == 0)
+        {
+            for(int i = 0; i < buildingCount; i++)
+            {
+                GameObject addBuilding = InstantiateBuilding("Building");
+                addBuilding.transform.SetParent(this.transform);
+
+                inactiveBuilding.Add(addBuilding);
+            }
+        }
+
+
+        _newBuilding = inactiveBuilding[Random.Range(0, inactiveBuilding.Count)];
         _newBuilding.transform.position = newPosition;
         _newBuilding.transform.rotation = Quaternion.Euler(0f, _angle, 0f);
-        _newBuilding.transform.SetParent(this.transform);
         _newBuilding.gameObject.SetActive(true);
 
         // 리스트 순서를 업데이트
         oldBuilding.gameObject.SetActive(false);
-        oldBuilding.transform.SetParent(resourceRevision.transform);
         _buildingList.RemoveAt(_index);
         _buildingList.Add(_newBuilding);
 
@@ -98,6 +122,6 @@ public class BuildingMoveRevision : MonoBehaviour
 
     private GameObject InstantiateBuilding(string _name)
     {    
-        return resourceRevision.GetRandomBuildingFromChildren(_name);
+        return resourceRevision.GetRandomObjectFromChildren(_name);
     }
 }
