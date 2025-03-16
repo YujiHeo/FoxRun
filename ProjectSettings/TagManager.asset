@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Obstacle
   - ItemTest
+  - Item
+  - EnviromentLoop
   layers:
   - Default
   - TransparentFX
