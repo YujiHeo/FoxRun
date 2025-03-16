@@ -2233,6 +2233,7 @@ MonoBehaviour:
   - {fileID: 2128860529358028148}
   - {fileID: 4670129053604442083}
   player: {fileID: 1160043721}
+  backgroundChangeTimeGap: 0
   moveSpeed: 30
   spawnGap: 0.5
   addmoveSpeed: 0.5

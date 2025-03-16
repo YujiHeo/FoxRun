@@ -9,11 +9,11 @@ public class ObstacleCollision : MonoBehaviour
     public int blinkCount = 3; // ±ôºýÀÌ´Â È½¼ö
     private Coroutine blinkCoroutine; // ±ôºýÀÌ±â ÄÚ·çÆ¾ ÀúÀå
     private Color blinkColor = Color.red;
-    private Rigidbody rigidbody;
+    private Rigidbody rigidbodyObstacle;
 
     private void Start()
     {
-        rigidbody = transform.GetComponent<Rigidbody>();
+        rigidbodyObstacle = transform.GetComponent<Rigidbody>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -22,7 +22,7 @@ public class ObstacleCollision : MonoBehaviour
             var player = other.transform.GetComponent<Player>();
             Renderer playerRenderer = player.GetComponentInChildren<Renderer>();
 
-            if(player.condition.isInvincibleTime)
+            if (player.condition.isInvincibleTime)
             {
                 Vector3 randomDirection = new Vector3(
                     Random.Range(-1f, 1f),  // XÃà ·£´ý °ª
@@ -32,7 +32,7 @@ public class ObstacleCollision : MonoBehaviour
 
                 float forcePower = 100f; // ÈûÀÇ Å©±â
 
-                rigidbody.AddForce(randomDirection * forcePower, ForceMode.Impulse);
+                rigidbodyObstacle.AddForce(randomDirection * forcePower, ForceMode.Impulse);
 
                 Invoke(nameof(ReleaseObstacle), 2f);
             }
@@ -42,6 +42,10 @@ public class ObstacleCollision : MonoBehaviour
                 player.condition.GetDamage(1);
             }
 
+        }
+        else if (other.gameObject.CompareTag("Item"))
+        {
+            other.transform.position += new Vector3(0f,5f,0f);
         }
 
 
@@ -62,8 +66,8 @@ public class ObstacleCollision : MonoBehaviour
     private void ReleaseObstacle()
     {
         // Èû°ú È¸Àü ¼Óµµ ÃÊ±âÈ­
-        rigidbody.velocity = Vector3.zero;
-        rigidbody.angularVelocity = Vector3.zero;
+        rigidbodyObstacle.velocity = Vector3.zero;
+        rigidbodyObstacle.angularVelocity = Vector3.zero;
         MapManager.Instance.mapControllerTest.movingObstacles.ReleaseObject(gameObject);
     }
 

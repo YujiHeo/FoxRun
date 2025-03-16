@@ -13,6 +13,7 @@ public class MapControllerTest : MonoBehaviour
     public BuildingMoveRevision treeObjects;
     public MeshRenderer[] buildingGround;
     public Player player;
+    public float backgroundChangeTimeGap = 10f;
     [Range(30, 100)] public float moveSpeed;
     [Range(0.1f, 1f)] public float spawnGap;
     [Range(0, 1)] public float addmoveSpeed;
@@ -60,13 +61,13 @@ public class MapControllerTest : MonoBehaviour
         while (true)
         {
             treeObjects.resourceName = ResourceName.Spring;
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(backgroundChangeTimeGap*Time.deltaTime);
             treeObjects.resourceName = ResourceName.Summer;
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(backgroundChangeTimeGap*Time.deltaTime);
             treeObjects.resourceName = ResourceName.Fall;
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(backgroundChangeTimeGap * Time.deltaTime);
             treeObjects.resourceName = ResourceName.Winter;
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(backgroundChangeTimeGap * Time.deltaTime);
         }
     }
 

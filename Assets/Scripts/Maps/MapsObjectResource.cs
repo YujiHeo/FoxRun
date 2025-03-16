@@ -21,7 +21,7 @@ public class MapsObjectResource : MonoBehaviour
 {
     public ResourceName resourceFileName;
     private Dictionary<string, GameObject> ObjectPrefabs;
-    Transform objectTranform; // 하위 오브젝트 찾기용
+    Transform objectTranform;
     List<Transform> filteredObjects = new List<Transform>(); // 특정 키워드를 포함하는 자식 오브젝트 리스트
     Transform randomObject;
 
