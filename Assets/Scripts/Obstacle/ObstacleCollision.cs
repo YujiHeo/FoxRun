@@ -21,9 +21,27 @@ public class ObstacleCollision : MonoBehaviour
         {
             var player = other.transform.GetComponent<Player>();
             Renderer playerRenderer = player.GetComponentInChildren<Renderer>();
-            playerRenderer.material.color = blinkColor;
-            //MapManager.Instance.mapControllerTest.movingObstacles.ReleaseObject(gameObject);
-            player.condition.GetDamage(1);
+
+            if(player.condition.isInvincibleTime)
+            {
+                Vector3 randomDirection = new Vector3(
+                    Random.Range(-1f, 1f),  // X축 랜덤 값
+                    Random.Range(0.2f, 1f), // Y축은 너무 낮으면 안 떠오르므로 최소값 설정
+                    Random.Range(-1f, 1f)   // Z축 랜덤 값
+                ).normalized; // 정규화하여 크기를 1로 만듦
+
+                float forcePower = 100f; // 힘의 크기
+
+                rigidbody.AddForce(randomDirection * forcePower, ForceMode.Impulse);
+
+                Invoke(nameof(ReleaseObstacle), 2f);
+            }
+            else
+            {
+                playerRenderer.material.color = blinkColor;
+                player.condition.GetDamage(1);
+            }
+
         }
 
 
@@ -39,6 +57,14 @@ public class ObstacleCollision : MonoBehaviour
 
 
         }
+    }
+
+    private void ReleaseObstacle()
+    {
+        // 힘과 회전 속도 초기화
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+        MapManager.Instance.mapControllerTest.movingObstacles.ReleaseObject(gameObject);
     }
 
 
