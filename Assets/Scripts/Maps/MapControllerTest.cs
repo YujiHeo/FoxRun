@@ -9,6 +9,8 @@ public class MapControllerTest : MonoBehaviour
     public MapElementData builddingData;
     public MapsMovingObstacles movingItmes;
     public MapsMovingObstacles movingObstacles;
+    public BuildingMoveRevision building;
+    public BuildingMoveRevision treeObjects;
     public MeshRenderer[] buildingGround;
     public Player player;
     [Range(30, 100)] public float moveSpeed;
@@ -24,6 +26,8 @@ public class MapControllerTest : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<Player>();
+
+        StartCoroutine(ChangeColorRoutine());
     }
 
     public void Update()
@@ -48,35 +52,48 @@ public class MapControllerTest : MonoBehaviour
             moveSpeed += Time.deltaTime * addmoveSpeed;
         }
 
-        if (moveSpeed >= 40f)
-        {
-            for (int i = 0; i < buildingGround.Length; i++)
-            {
-                StartCoroutine(ChangeColorGradually(Color.gray));
-            }
-        }
     }
 
-    private IEnumerator ChangeColorGradually(Color targetColor)
+
+    IEnumerator ChangeColorRoutine()
     {
-        foreach (var obj in buildingGround)
+        while (true)
         {
-            if (obj != null)
-            {
-                Color startColor = obj.material.color;
-                float t = 0f;
-
-                while (t < 1f)
-                {
-                    t += Time.deltaTime * 1;
-                    obj.material.color = Color.Lerp(startColor, targetColor, t);
-                    yield return null;  // 한 프레임 대기
-                }
-
-                obj.material.color = targetColor;  // 최종 색상 적용
-            }
+            treeObjects.resourceName = ResourceName.Spring;
+            yield return new WaitForSeconds(10f);
+            treeObjects.resourceName = ResourceName.Summer;
+            yield return new WaitForSeconds(10f);
+            treeObjects.resourceName = ResourceName.Fall;
+            yield return new WaitForSeconds(10f);
+            treeObjects.resourceName = ResourceName.Winter;
+            yield return new WaitForSeconds(10f);
         }
     }
+
+
+
+
+
+    //private IEnumerator ChangeColorGradually(Color targetColor)
+    //{
+    //    foreach (var obj in buildingGround)
+    //    {
+    //        if (obj != null)
+    //        {
+    //            Color startColor = obj.material.color;
+    //            float t = 0f;
+
+    //            while (t < 1f)
+    //            {
+    //                t += Time.deltaTime * 1;
+    //                obj.material.color = Color.Lerp(startColor, targetColor, t);
+    //                yield return null;  // 한 프레임 대기
+    //            }
+
+    //            obj.material.color = targetColor;  // 최종 색상 적용
+    //        }
+    //    }
+    //}
 
 
 }

@@ -15,6 +15,7 @@ public class BuildingMoveRevision : MonoBehaviour
     public int buildingCount;
     public float resetPositionZ = -10f;  // 도로가 이 위치까지 오면 맨 앞으로 이동
     public float startPositionZ = 10f;   // 도로를 맨 앞으로 배치할 위치
+    public ResourceName resourceName;
 
     private List<GameObject> inactiveBuilding = new List<GameObject>(); // 활성화된 빌딩 리스트
 
@@ -24,9 +25,9 @@ public class BuildingMoveRevision : MonoBehaviour
     {
         for (int i = 0; i < buildingCount; i++)
         {
-            startbuildingRight.Add(resourceRevision.GetRandomObjectFromChildren("Building"));
+            startbuildingRight.Add(resourceRevision.GetRandomObjectFromChildren(resourceName.ToString()));
             startbuildingRight[i].transform.SetParent(this.transform);
-            startbuildingLeft.Add(resourceRevision.GetRandomObjectFromChildren("Building"));
+            startbuildingLeft.Add(resourceRevision.GetRandomObjectFromChildren(resourceName.ToString()));
             startbuildingLeft[i].transform.SetParent(this.transform);
 
         }
@@ -90,7 +91,7 @@ public class BuildingMoveRevision : MonoBehaviour
         // 비활성화된 빌딩 리스트 찾아오기
         foreach (Transform ob in this.transform)
         {
-            if (!ob.gameObject.activeSelf)
+            if (!ob.gameObject.activeSelf && ob.name.Contains(resourceName.ToString()))
             {
                 inactiveBuilding.Add(ob.gameObject);
             }
@@ -100,7 +101,7 @@ public class BuildingMoveRevision : MonoBehaviour
         {
             for(int i = 0; i < buildingCount; i++)
             {
-                GameObject addBuilding = InstantiateBuilding("Building");
+                GameObject addBuilding = InstantiateBuilding(resourceName.ToString());
                 addBuilding.transform.SetParent(this.transform);
 
                 inactiveBuilding.Add(addBuilding);

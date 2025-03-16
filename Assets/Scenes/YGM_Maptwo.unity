@@ -225,6 +225,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &376516222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 376516223}
+  - component: {fileID: 376516224}
+  m_Layer: 0
+  m_Name: TreeResource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &376516223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376516222}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3115181254123161906}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &376516224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376516222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70aabafbc98ee2f449cf56fac6988c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceFileName: 1
 --- !u!1 &404990410
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +364,61 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &424398220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 424398221}
+  - component: {fileID: 424398222}
+  m_Layer: 0
+  m_Name: Trees
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &424398221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424398220}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3115181254123161906}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &424398222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424398220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63201d2c4b91b3645ae2c0d299e82066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startbuildingRight: []
+  startbuildingLeft: []
+  buildingRight: {fileID: 0}
+  buildingLeft: {fileID: 0}
+  buildingData: {fileID: 11400000, guid: 952d7278e4f53dc44af239f6a7c70752, type: 2}
+  resourceRevision: {fileID: 376516224}
+  sidePositionX: 12
+  buildingCount: 10
+  resetPositionZ: -50
+  startPositionZ: 20
+  resourceName: 1
 --- !u!4 &440463912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7732591688581404640, guid: 17cd613c621c25644a1b406402419138, type: 3}
@@ -426,7 +526,7 @@ MonoBehaviour:
   objectsSpawnY: 1
   minSpawnInterval: 0.3
   speedFactor: 0.05
-  resourceName: 2
+  resourceName: 6
 --- !u!4 &653875703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2060142619889723084, guid: 4ede9260d7472bb4181442666eea2666, type: 3}
@@ -481,7 +581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70aabafbc98ee2f449cf56fac6988c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceFileName: Items
+  resourceFileName: 6
 --- !u!1 &880378458
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70aabafbc98ee2f449cf56fac6988c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceFileName: Obstacles
+  resourceFileName: 5
 --- !u!1001 &1157464320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -697,7 +797,7 @@ PrefabInstance:
       objectReference: {fileID: 778444060}
     - target: {fileID: 3371860316688719699, guid: 5c774530704232a43b934b713d16cc08, type: 3}
       propertyPath: resourceName
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3371860316688719699, guid: 5c774530704232a43b934b713d16cc08, type: 3}
       propertyPath: obstacleCount
@@ -1566,6 +1666,8 @@ Transform:
   - {fileID: 8283020910513214767}
   - {fileID: 778444059}
   - {fileID: 573111050}
+  - {fileID: 376516223}
+  - {fileID: 424398221}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3248314695508962246
@@ -1849,7 +1951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70aabafbc98ee2f449cf56fac6988c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceFileName: Building
+  resourceFileName: 0
 --- !u!33 &5627248605032696721
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2101,6 +2203,8 @@ MonoBehaviour:
   builddingData: {fileID: 11400000, guid: 952d7278e4f53dc44af239f6a7c70752, type: 2}
   movingItmes: {fileID: 573111051}
   movingObstacles: {fileID: 1661723872}
+  building: {fileID: 8858635985539307568}
+  treeObjects: {fileID: 424398222}
   buildingGround:
   - {fileID: 2128860529358028148}
   - {fileID: 4670129053604442083}
@@ -2183,10 +2287,11 @@ MonoBehaviour:
   buildingLeft: {fileID: 0}
   buildingData: {fileID: 11400000, guid: 952d7278e4f53dc44af239f6a7c70752, type: 2}
   resourceRevision: {fileID: 5076481253543179893}
-  sidePositionX: 20
+  sidePositionX: 22
   buildingCount: 10
   resetPositionZ: -50
   startPositionZ: 20
+  resourceName: 0
 --- !u!1 &9207779263574748822
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,14 +7,19 @@ using UnityEngine;
 public enum ResourceName
 {
     Building,
+    Spring,
+    Summer,
+    Fall,
+    Winter,
     Vehicle,
-    Item
+    Item,
+    Props
 }
 
 
 public class MapsObjectResource : MonoBehaviour
 {
-    public string resourceFileName;
+    public ResourceName resourceFileName;
     private Dictionary<string, GameObject> ObjectPrefabs;
     Transform objectTranform; // 하위 오브젝트 찾기용
     List<Transform> filteredObjects = new List<Transform>(); // 특정 키워드를 포함하는 자식 오브젝트 리스트
@@ -23,17 +28,17 @@ public class MapsObjectResource : MonoBehaviour
     private void Awake()
     {
         objectTranform = this.transform;
-        LoadObjects();
+        LoadObjects(resourceFileName.ToString());
         SaveObjects();
     }
 
 
-    private void LoadObjects()
+    private void LoadObjects(string _resourcFilName)
     {
         ObjectPrefabs = new Dictionary<string, GameObject>();
 
         // Resources 폴더에서 빌딩 프리팹 한 번에 로드
-        GameObject[] loadedObjects = Resources.LoadAll<GameObject>(resourceFileName);
+        GameObject[] loadedObjects = Resources.LoadAll<GameObject>(_resourcFilName);
 
         foreach (GameObject building in loadedObjects)
         {
@@ -77,7 +82,7 @@ public class MapsObjectResource : MonoBehaviour
 
         if (filteredObjects.Count == 0)
         {
-            LoadObjects();
+            LoadObjects(filterKeyword);
             SaveObjects();
 
             foreach (Transform child in objectTranform)

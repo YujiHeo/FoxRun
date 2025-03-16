@@ -119,7 +119,6 @@ public class MapsMovingObstacles : MonoBehaviour
         {
             movingObjects.Remove(_object); // 리스트에서 제거
             _object.SetActive(false); // 비활성화 처리
-            Debug.Log($"오브젝트 '{_object.name}' 제거 완료");
         }
         else
         {

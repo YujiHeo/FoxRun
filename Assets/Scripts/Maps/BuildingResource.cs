@@ -37,7 +37,7 @@ public class BuildingResource : MonoBehaviour
 
         foreach (var key in buildingPrefabs.Keys)
         {
-            if (key.Contains(filterKeyword))  
+            if (key.Contains(filterKeyword))
             {
                 filteredKeys.Add(key);
             }
