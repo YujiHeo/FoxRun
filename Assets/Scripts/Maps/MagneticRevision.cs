@@ -21,13 +21,11 @@ public class MagneticRevision : MonoBehaviour
 
         childCount = items.transform.childCount;
 
-        for (int i = 0; i < childCount; i++ )
+        foreach (Transform childTransform in items.transform)
         {
-            child = items.transform.GetChild(i).gameObject;
-
-            if(child.activeSelf)
+            if (childTransform.gameObject.activeSelf)
             {
-                itemsList.Add(child);
+                itemsList.Add(childTransform.gameObject);
             }
         }
 
