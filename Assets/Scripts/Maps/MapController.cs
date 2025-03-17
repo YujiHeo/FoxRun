@@ -12,10 +12,16 @@ public class MapController : MonoBehaviour
     public MapElementData builddingData;
     public SpawnObstacle spawnObstacle;
     public MeshRenderer[] buildingGround;
+    public Player player;
     [Range(30, 100)] public float moveSpeed;
     [Range(0.1f, 1f)] public float spawnGap;
     [Range(0,1)] public float addmoveSpeed;
 
+
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
 
     public void Update()
     {
@@ -23,6 +29,12 @@ public class MapController : MonoBehaviour
         roadData.moveSpeed = moveSpeed;
         builddingData.moveSpeed = moveSpeed;
         spawnObstacle.minSpawnInterval = spawnGap;
+
+        if(player.condition.Hp <=0)
+        {
+            moveSpeed = 0f;
+        }
+
 
         if(moveSpeed >= 100f)
         {

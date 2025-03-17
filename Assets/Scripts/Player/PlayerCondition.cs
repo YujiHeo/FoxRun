@@ -76,13 +76,13 @@ public class PlayerCondition : MonoBehaviour
     {
         Debug.Log("무적이 되었습니다!");
 
-        float originalSpeed = speed;
+        //float originalSpeed = speed;
 
-        speed = originalSpeed * 2;
+        //speed = originalSpeed * 2;
 
         yield return new WaitForSeconds(duration);
 
-        speed = originalSpeed;
+        //speed = originalSpeed;
 
         PlayerCondition.isMagnet = false;
         player.isInvincibleTime = false;

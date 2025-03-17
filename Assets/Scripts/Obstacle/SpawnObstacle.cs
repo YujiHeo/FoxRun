@@ -59,15 +59,6 @@ public class SpawnObstacle : MonoBehaviour
             ItemObstacle(item, ItemspawnY);
         }
 
-        //    int index = Random.Range(0, obstacle.Length); // 배열에서 랜덤으로 장애물 선택
-        //int indexPosition = Random.Range(0, spawnX.Count);
-        //float _spawnX = spawnX[indexPosition];
-
-        //Vector3 spawnPosition = new Vector3(_spawnX, 0, spawnZ);
-        //GameObject newObstacle = Instantiate(obstacle[index], spawnPosition, Quaternion.identity);
-
-        //newObstacle.transform.SetParent(this.transform);
-
     }
 
 

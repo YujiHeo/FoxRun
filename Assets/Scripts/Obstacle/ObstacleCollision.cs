@@ -9,14 +9,52 @@ public class ObstacleCollision : MonoBehaviour
     public int blinkCount = 3; // 깜빡이는 횟수
     private Coroutine blinkCoroutine; // 깜빡이기 코루틴 저장
     private Color blinkColor = Color.red;
+    private Rigidbody rigidbodyObstacle;
+
+    private void Start()
+    {
+        rigidbodyObstacle = transform.GetComponent<Rigidbody>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             var player = other.transform.GetComponent<Player>();
             Renderer playerRenderer = player.GetComponentInChildren<Renderer>();
-            playerRenderer.material.color = blinkColor;
-            player.condition.GetDamage(1);
+
+            if (player.condition.isInvincibleTime)
+            {
+
+                Vector3 randomDirection = new Vector3(
+                    Random.Range(-1f, 1f),  // X축 랜덤 값
+                    Random.Range(0.2f, 1f), // Y축은 너무 낮으면 안 떠오르므로 최소값 설정
+                    Random.Range(1f, 2f)   // Z축 랜덤 값
+                ).normalized; // 정규화하여 크기를 1로 만듦
+
+                float forcePower = 100f; // 힘의 크기
+
+                rigidbodyObstacle.AddForce(randomDirection * forcePower, ForceMode.Impulse);
+
+                Vector3 randomTorque = new Vector3(
+                    Random.Range(-1f, 1f),
+                    Random.Range(-1f, 1f),
+                    Random.Range(-1f, 1f)
+                ) * 10f; // 회전 힘의 크기 조절
+
+                rigidbodyObstacle.AddTorque(randomTorque, ForceMode.Impulse);
+
+                Invoke(nameof(ReleaseObstacle), 1f);
+            }
+            else
+            {
+                playerRenderer.material.color = blinkColor;
+                player.condition.GetDamage(1);
+            }
+
+        }
+        else if (other.gameObject.CompareTag("Item"))
+        {
+            other.transform.position += Vector3.up * 5f;
         }
 
 
@@ -32,6 +70,15 @@ public class ObstacleCollision : MonoBehaviour
 
 
         }
+    }
+
+    private void ReleaseObstacle()
+    {
+        // 힘과 회전 속도 초기화
+        rigidbodyObstacle.velocity = Vector3.zero;
+        rigidbodyObstacle.angularVelocity = Vector3.zero;
+        rigidbodyObstacle.transform.rotation = Quaternion.identity;
+        MapManager.Instance.mapControllerTest.movingObstacles.ReleaseObject(gameObject);
     }
 
 
