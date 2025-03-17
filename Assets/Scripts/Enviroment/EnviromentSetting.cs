@@ -16,7 +16,7 @@ public class EnviromentSetting : MonoBehaviour
     public float moveSpeed;
     public Vector3 lastPosition;
 
-    private bool setWinter = false;
+    public bool setWinter = false;
     void Start()
     {
         //lastPosition = snowEnviroment.OrderByDescending(obj => obj.transform.position.z).First().transform.position;

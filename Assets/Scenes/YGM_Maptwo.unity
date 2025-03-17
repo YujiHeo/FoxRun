@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 1, g: 0.9607843, b: 0.09803922, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.005
+  m_FogDensity: 0.002
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -5853,6 +5853,22 @@ PrefabInstance:
       propertyPath: spoot
       value: 
       objectReference: {fileID: 102844664}
+    - target: {fileID: 5669652689306605153, guid: 1b0633932eed9974d963295514b6e14d, type: 3}
+      propertyPath: winterFog.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669652689306605153, guid: 1b0633932eed9974d963295514b6e14d, type: 3}
+      propertyPath: winterFog.b
+      value: 0.8039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669652689306605153, guid: 1b0633932eed9974d963295514b6e14d, type: 3}
+      propertyPath: winterFog.g
+      value: 0.9019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669652689306605153, guid: 1b0633932eed9974d963295514b6e14d, type: 3}
+      propertyPath: winterFog.r
+      value: 0.9019608
+      objectReference: {fileID: 0}
     - target: {fileID: 5680156026821671139, guid: 1b0633932eed9974d963295514b6e14d, type: 3}
       propertyPath: m_Layer
       value: 6

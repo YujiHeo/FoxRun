@@ -30,12 +30,15 @@ public class DayNightCycle : MonoBehaviour
     [Header("Spoot Lighting")]
     public Light spoot;
 
+    public Color winterFog;
     private float skyRotation;
+    private EnviromentSetting enviromentSetting;
 
     private void Start()
     {
         timeRate = 1.0f / fullDayLength;
         time = startTime;
+        enviromentSetting = GetComponentInParent<EnviromentSetting>();
     }
 
     private void Update()
@@ -70,6 +73,12 @@ public class DayNightCycle : MonoBehaviour
         {
             go.SetActive(true);
             DayORNight(lightSource);
+            if (enviromentSetting.setWinter && lightSource == sun)
+            {
+                RenderSettings.fogColor = winterFog;
+                return;
+            }
+
             RenderSettings.fogColor = lightSource.color;
         }
 
