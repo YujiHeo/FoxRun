@@ -18,7 +18,7 @@ public class MapControllerTest : MonoBehaviour
     [Range(0.1f, 1f)] public float spawnGap;
     [Range(0, 1)] public float addmoveSpeed;
     public ParticleSystem[] seasonPartcle;
-
+    public EnviromentSetting enviromentSetting;
 
     private void Awake()
     {
@@ -28,7 +28,7 @@ public class MapControllerTest : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<Player>();
-
+        enviromentSetting = GetComponentInChildren<EnviromentSetting>();
         StartCoroutine(ChangeColorRoutine());
     }
 
@@ -64,6 +64,7 @@ public class MapControllerTest : MonoBehaviour
             treeObjects.resourceName = ResourceName.Spring;
             seasonPartcle[3].Stop();
             seasonPartcle[0].Play();
+            enviromentSetting.SetMainEnvironment();
             yield return new WaitForSeconds(backgroundChangeTimeGap);
             treeObjects.resourceName = ResourceName.Summer;
             seasonPartcle[0].Stop();
@@ -76,6 +77,7 @@ public class MapControllerTest : MonoBehaviour
             treeObjects.resourceName = ResourceName.Winter;
             seasonPartcle[2].Stop();
             seasonPartcle[3].Play();
+            enviromentSetting.SetSnowEnvironment();
             yield return new WaitForSeconds(backgroundChangeTimeGap);
         }
     }
