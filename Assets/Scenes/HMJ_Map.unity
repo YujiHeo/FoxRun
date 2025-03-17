@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 709235461}
-  m_IndirectSpecularColor: {r: 0.548476, g: 0.85486525, b: 0.9222619, a: 1}
+  m_IndirectSpecularColor: {r: 0.5483743, g: 0.8548098, b: 0.9222482, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5597,6 +5597,8 @@ MonoBehaviour:
   moveSpeed: 30
   spawnGap: 0.5
   addmoveSpeed: 0.5
+  seasonPartcle: []
+  enviromentSetting: {fileID: 0}
 --- !u!114 &234173711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14199,18 +14201,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 234173712}
     m_Modifications:
     - target: {fileID: 14204454085642901, guid: 1b0633932eed9974d963295514b6e14d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.3333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 14204454085642901, guid: 1b0633932eed9974d963295514b6e14d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.3333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 14204454085642901, guid: 1b0633932eed9974d963295514b6e14d, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3.3333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 14204454085642901, guid: 1b0633932eed9974d963295514b6e14d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -102.5102
       objectReference: {fileID: 0}
@@ -14258,18 +14248,6 @@ PrefabInstance:
       propertyPath: spoot
       value: 
       objectReference: {fileID: 758974413}
-    - target: {fileID: 6086891963473645207, guid: 1b0633932eed9974d963295514b6e14d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7841791500009616094, guid: 1b0633932eed9974d963295514b6e14d, type: 3}
-      propertyPath: m_MaterialTemplate
-      value: 
-      objectReference: {fileID: 10650, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 8422814755028819028, guid: 1b0633932eed9974d963295514b6e14d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
