@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Item
+  - EnviromentLoop
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - BackGround
   - 
   - 
   - 
