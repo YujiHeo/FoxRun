@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6537682419801411323}
   - component: {fileID: 130985427642232794}
   - component: {fileID: -7698013439359845095}
+  - component: {fileID: 2915866999771978557}
   m_Layer: 0
   m_Name: Item_InvincibleItem
   m_TagString: Item
@@ -135,3 +136,17 @@ MonoBehaviour:
   destroyDelay: 0.1
   scoreValue: 0
   duration: 5
+--- !u!114 &2915866999771978557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6073147330252835817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cca7b92ecfdd34fab818b7b81e0a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemEffectPrefab: {fileID: 8443315704496310910, guid: 4b7ac60e8bbe0a34699c8cdf07a05c14, type: 3}
+  destroyDelay: 5

@@ -15,6 +15,7 @@ public class ItemEffect : MonoBehaviour
         if (collision.CompareTag("Player") && !isDestroyed)
         {
             Player player = collision.GetComponent<Player>();
+            this.transform.position = player.transform.position + Vector3.up*0.5f;
 
             if (player != null)
             {

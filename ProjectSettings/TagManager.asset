@@ -5,9 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
-  - ItemTest
   - Item
-  - EnviromentLoop
   layers:
   - Default
   - TransparentFX

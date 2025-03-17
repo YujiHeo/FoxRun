@@ -25,7 +25,6 @@ public class MapsMovingObstacles : MonoBehaviour
     private GameObject newObject; // 장애물저장고에서 새로 담을 게임오브젝트 변수
     private List<GameObject> inactiveObjects = new List<GameObject>(); // 활성화된 장애물 확인 용도
     private GameObject temptObject; // 빈 게임오브젝트
-    private GameObject selectItem;
 
 
     // Start is called before the first frame update
@@ -35,8 +34,7 @@ public class MapsMovingObstacles : MonoBehaviour
         for(int i = 0; i < movingObjetctsCount; i++)
         {
              temptObject = objectResource.GetRandomObjectFromChildren(resourceName.ToString());
-             temptObject.transform.SetParent(this.transform);
-            //movingObjects[i].transform.SetParent(this.transform);         
+             temptObject.transform.SetParent(this.transform);  
         }
 
         StartCoroutine(SpawnObstacleRoutine());
@@ -123,6 +121,8 @@ public class MapsMovingObstacles : MonoBehaviour
             {
                 SelectItmeMethod(inactiveObjects, spawnPosition, "CommonItem");
             }
+
+
         }
         else
         {
@@ -150,14 +150,38 @@ public class MapsMovingObstacles : MonoBehaviour
     }
 
 
-    private void SelectItmeMethod(List<GameObject> _selectIteList, Vector3 _spawnPosition, string _itemName)
+    private void SelectItmeMethod(List<GameObject> _selectIteList,Vector3 _spawnPosition, string _itemName)
     {
+        GameObject selectItem = null;
+
+
         for (int i = 0; i < inactiveObjects.Count; i++)
         {
             if (inactiveObjects[i].name.Contains(_itemName))
             {
                 selectItem = inactiveObjects[i];
+
                 break;
+            }
+        }
+
+        if(selectItem == null)
+        {
+            for (int i = 0; i < movingObjetctsCount; i++)
+            {
+                GameObject _newObjects = objectResource.GetRandomObjectFromChildren(resourceName.ToString());
+                _newObjects.transform.SetParent(this.transform); // 부모를 설정하여 obstacle 하위로 이동
+
+                inactiveObjects.Add(_newObjects);
+            }
+
+            for (int i = 0; i < inactiveObjects.Count; i++)
+            {
+                if (inactiveObjects[i].name.Contains(_itemName))
+                {
+                    selectItem = inactiveObjects[i];
+                    break;
+                }
             }
         }
 
