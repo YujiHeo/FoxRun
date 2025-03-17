@@ -25,6 +25,7 @@ public class MapsMovingObstacles : MonoBehaviour
     private GameObject newObject; // 장애물저장고에서 새로 담을 게임오브젝트 변수
     private List<GameObject> inactiveObjects = new List<GameObject>(); // 활성화된 장애물 확인 용도
     private GameObject temptObject; // 빈 게임오브젝트
+    private Coroutine spawnCoroutine; // 코루틴을 저장할 변수
 
 
     // Start is called before the first frame update
@@ -37,7 +38,7 @@ public class MapsMovingObstacles : MonoBehaviour
              temptObject.transform.SetParent(this.transform);  
         }
 
-        StartCoroutine(SpawnObstacleRoutine());
+        spawnCoroutine = StartCoroutine(SpawnObstacleRoutine());
     }
 
 
@@ -191,9 +192,13 @@ public class MapsMovingObstacles : MonoBehaviour
 
     }
 
-    public void StopSpawing()
+    public void StopSpawning()
     {
-        StopCoroutine(SpawnObstacleRoutine());
+        if (spawnCoroutine != null)  // null 체크 추가
+        {
+            StopCoroutine(spawnCoroutine);
+            spawnCoroutine = null;
+        }
     }
 
 }

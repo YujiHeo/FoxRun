@@ -42,6 +42,8 @@ public class MapControllerTest : MonoBehaviour
         if (player.condition.Hp <= 0)
         {
             moveSpeed = 0f;
+            movingItmes.StopSpawning();
+            movingObstacles.StopSpawning();
         }
 
 

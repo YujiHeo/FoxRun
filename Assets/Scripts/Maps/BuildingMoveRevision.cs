@@ -53,25 +53,28 @@ public class BuildingMoveRevision : MonoBehaviour
 
     private void Update()
     {
-
-        for (int i = 0; i < startbuildingRight.Count; i++)
+        if(buildingData.moveSpeed > 0f)
         {
-
-            startbuildingRight[i].transform.Translate(Vector3.left * buildingData.moveSpeed * Time.deltaTime);
-            startbuildingLeft[i].transform.Translate(Vector3.right * buildingData.moveSpeed * Time.deltaTime);
-
-
-            // 특정 위치에 도달하면 맨 앞으로 이동
-            if (startbuildingRight[i].transform.position.z <= resetPositionZ)
+            for (int i = 0; i < startbuildingRight.Count; i++)
             {
-                RepositionBuilding(startbuildingRight, buildingRight, i, -90f);
-            }
 
-            if (startbuildingLeft[i].transform.position.z <= resetPositionZ)
-            {
-                RepositionBuilding(startbuildingLeft, buildingLeft, i, 90f);
+                startbuildingRight[i].transform.Translate(Vector3.left * buildingData.moveSpeed * Time.deltaTime);
+                startbuildingLeft[i].transform.Translate(Vector3.right * buildingData.moveSpeed * Time.deltaTime);
+
+
+                // 특정 위치에 도달하면 맨 앞으로 이동
+                if (startbuildingRight[i].transform.position.z <= resetPositionZ)
+                {
+                    RepositionBuilding(startbuildingRight, buildingRight, i, -90f);
+                }
+
+                if (startbuildingLeft[i].transform.position.z <= resetPositionZ)
+                {
+                    RepositionBuilding(startbuildingLeft, buildingLeft, i, 90f);
+                }
             }
         }
+
 
     }
 
