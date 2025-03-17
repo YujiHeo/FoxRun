@@ -25,6 +25,7 @@ public class MapsMovingObstacles : MonoBehaviour
     private GameObject newObject; // 장애물저장고에서 새로 담을 게임오브젝트 변수
     private List<GameObject> inactiveObjects = new List<GameObject>(); // 활성화된 장애물 확인 용도
     private GameObject temptObject; // 빈 게임오브젝트
+    private GameObject selectItem;
 
 
     // Start is called before the first frame update
@@ -99,17 +100,38 @@ public class MapsMovingObstacles : MonoBehaviour
             }
         }
 
-        int index = Random.Range(0, inactiveObjects.Count); // 장애물 리스트에서 랜덤으로 인덱스 선택
-
         int indexPosition = Random.Range(0, spawnX.Count); // 3가지 길 중 랜덤 인덱스 선택
         float _spawnX = spawnX[indexPosition]; // 선택된 랜덤 위치 선정
 
         Vector3 spawnPosition = new Vector3(_spawnX, _sapwY, spawnZ); // 최종 위치 결정
 
-        GameObject newObstacle = inactiveObjects[index];
-        newObstacle.transform.position = spawnPosition;
-        newObstacle.gameObject.SetActive(true);
-        movingObjects.Add(newObstacle);
+
+        if (_typeName == ResourceName.Item.ToSafeString())
+        {
+            int number = Random.Range(0, 100);
+
+            if(number > 95)
+            {
+                SelectItmeMethod(inactiveObjects, spawnPosition, "InvincibleItem");            
+
+            }
+            else if(number > 90)
+            {
+                SelectItmeMethod(inactiveObjects, spawnPosition, "FeverItem");
+            }
+            else
+            {
+                SelectItmeMethod(inactiveObjects, spawnPosition, "CommonItem");
+            }
+        }
+        else
+        {
+            int index = Random.Range(0, inactiveObjects.Count); // 장애물 리스트에서 랜덤으로 인덱스 선택
+            GameObject newObstacle = inactiveObjects[index];
+            newObstacle.transform.position = spawnPosition;
+            newObstacle.gameObject.SetActive(true);
+            movingObjects.Add(newObstacle);
+        }
 
     }
 
@@ -127,5 +149,22 @@ public class MapsMovingObstacles : MonoBehaviour
         }
     }
 
+
+    private void SelectItmeMethod(List<GameObject> _selectIteList, Vector3 _spawnPosition, string _itemName)
+    {
+        for (int i = 0; i < inactiveObjects.Count; i++)
+        {
+            if (inactiveObjects[i].name.Contains(_itemName))
+            {
+                selectItem = inactiveObjects[i];
+                break;
+            }
+        }
+
+        selectItem.transform.position = _spawnPosition;
+        selectItem.gameObject.SetActive(true);
+        movingObjects.Add(selectItem);
+
+    }
 
 }

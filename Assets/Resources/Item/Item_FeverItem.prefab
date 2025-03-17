@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4747076048902564421}
   - component: {fileID: 8202761698446681894}
   m_Layer: 0
-  m_Name: Item_Drink_02Test
+  m_Name: Item_FeverItem
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
