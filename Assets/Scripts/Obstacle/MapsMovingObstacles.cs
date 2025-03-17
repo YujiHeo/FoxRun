@@ -191,4 +191,9 @@ public class MapsMovingObstacles : MonoBehaviour
 
     }
 
+    public void StopSpawing()
+    {
+        StopCoroutine(SpawnObstacleRoutine());
+    }
+
 }
