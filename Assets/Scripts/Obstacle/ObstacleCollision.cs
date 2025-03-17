@@ -42,7 +42,7 @@ public class ObstacleCollision : MonoBehaviour
 
                 rigidbodyObstacle.AddTorque(randomTorque, ForceMode.Impulse);
 
-                Invoke(nameof(ReleaseObstacle), 2f);
+                Invoke(nameof(ReleaseObstacle), 1f);
             }
             else
             {
@@ -76,6 +76,7 @@ public class ObstacleCollision : MonoBehaviour
         // 힘과 회전 속도 초기화
         rigidbodyObstacle.velocity = Vector3.zero;
         rigidbodyObstacle.angularVelocity = Vector3.zero;
+        rigidbodyObstacle.transform.rotation = Quaternion.identity;
         MapManager.Instance.mapControllerTest.movingObstacles.ReleaseObject(gameObject);
     }
 
