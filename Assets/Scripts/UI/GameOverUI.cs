@@ -16,6 +16,8 @@ public class GameOverUI : BaseUI
     public override void Init(UIManager uiManager)
     {
         base.Init(uiManager);
+
+        lobbyButton.onClick.AddListener(OnClickGameOverLobbyButton);
     }
 
     public void SetScoreText()

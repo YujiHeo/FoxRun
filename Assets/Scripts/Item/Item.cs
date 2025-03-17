@@ -19,7 +19,8 @@ public abstract class Item : MonoBehaviour
             if(player !=null)
             {
                 ApplyEffect(player);
-                Destroy(gameObject, destroyDelay);
+                MapManager.Instance.mapControllerTest.movingItmes.ReleaseObject(this.gameObject);
+                //Destroy(gameObject, destroyDelay);
             }
             
         }

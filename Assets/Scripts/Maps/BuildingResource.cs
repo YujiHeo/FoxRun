@@ -11,6 +11,7 @@ public class BuildingResource : MonoBehaviour
         LoadBuildings();
     }
 
+
     private void LoadBuildings()
     {
         buildingPrefabs = new Dictionary<string, GameObject>();
@@ -25,6 +26,7 @@ public class BuildingResource : MonoBehaviour
 
     }
 
+
     // 랜던 빌딩 가져오는 매서드
     public GameObject GetRandomBuilding(string filterKeyword)
     {
@@ -35,7 +37,7 @@ public class BuildingResource : MonoBehaviour
 
         foreach (var key in buildingPrefabs.Keys)
         {
-            if (key.Contains(filterKeyword))  
+            if (key.Contains(filterKeyword))
             {
                 filteredKeys.Add(key);
             }

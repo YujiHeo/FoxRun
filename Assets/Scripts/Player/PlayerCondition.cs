@@ -36,6 +36,7 @@ public class PlayerCondition : MonoBehaviour
     [SerializeField] public bool isFeverTime = false;
     [SerializeField] public bool isInvincibleTime = false;
     [SerializeField] public static bool isMagnet = false;
+    Coroutine invinCoroutine;
 
     void Awake()
     {
@@ -72,17 +73,27 @@ public class PlayerCondition : MonoBehaviour
         player.isFeverTime = false;
     }
 
+    public void StartInvin(float duration)
+    {
+        isInvincibleTime = true;
+        isMagnet = true;
+
+        if (invinCoroutine != null)
+            StopCoroutine(invinCoroutine);
+        invinCoroutine =  StartCoroutine(StartInvincibleTime(this, duration));
+    }
+
     public IEnumerator StartInvincibleTime(PlayerCondition player, float duration)
     {
         Debug.Log("무적이 되었습니다!");
 
-        float originalSpeed = speed;
+        //float originalSpeed = speed;
 
-        speed = originalSpeed * 2;
+        //speed = originalSpeed * 2;
 
         yield return new WaitForSeconds(duration);
 
-        speed = originalSpeed;
+        //speed = originalSpeed;
 
         PlayerCondition.isMagnet = false;
         player.isInvincibleTime = false;

@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
     GameOverUI gameOverUI = null;
     SettingUI settingUI = null;
     AchievementUI achievementUI = null;
+    AchievementPopUpUI achievementPopUpUI = null;
 
     public bool uISceneCameraPlay = false;
 
@@ -84,6 +85,8 @@ public class UIManager : MonoBehaviour
         settingUI?.Init(this);
         achievementUI = GetComponentInChildren<AchievementUI>(true);
         achievementUI?.Init(this);
+        achievementPopUpUI = GetComponentInChildren<AchievementPopUpUI>(true);
+        achievementPopUpUI?.Init(this);
 
         ChangeState(UIState.Title);
 
@@ -100,6 +103,12 @@ public class UIManager : MonoBehaviour
         gameOverUI?.SetActive(currentState);
         settingUI?.SetActive(currentState);
         achievementUI?.SetActive(currentState);
+    }
+
+
+    public void AchievementClear(string _description)
+    {
+        achievementPopUpUI.AchievementCleared(_description);
     }
 
 
@@ -160,7 +169,7 @@ public class UIManager : MonoBehaviour
     {
         ChangeState(UIState.Game); //타이틀Ui로 복귀
 
-        SceneManager.LoadScene("Test_KGS");
+        SceneManager.LoadScene("YGM_Map");
 
         AchivementManager.instance.SignAchivement(00); //첫플레이 도전과제 달성용
 

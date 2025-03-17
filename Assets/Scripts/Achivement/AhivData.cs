@@ -32,6 +32,7 @@ public class AchivData : ScriptableObject
         if (isClear)
         {
             Debug.Log(Name + "달성: " + Description);
+            UIManager.instance.AchievementClear($"도전과제 달성\n{Name}");
             level++;
         }
     }

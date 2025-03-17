@@ -16,6 +16,7 @@ Material:
   - _TRANSLUCENCYONOFF_ON
   m_InvalidKeywords:
   - _ALPHAPREMULTIPLY_ON
+  - _CUSTOMCOLORSTINTING_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -73,7 +74,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _CUSTOMCOLORSTINTING: 0
+    - _CUSTOMCOLORSTINTING: 1
     - _CUSTOMWIND: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -103,7 +104,7 @@ Material:
     - _TransNormalDistortion: 0.1
     - _TransScattering: 2
     - _TransShadow: 0.9
-    - _Translucency: 10
+    - _Translucency: 8.8
     - _UVSec: 0
     - _WINDMASKONOFF: 0
     - _WindDensity: 3.3
@@ -115,5 +116,5 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 1, g: 0, b: 0.52867746, a: 1}
-    - _TopColor: {r: 0.5764706, g: 0.03921568, b: 0.26672268, a: 1}
+    - _TopColor: {r: 0.671159, g: 0.21618192, b: 0.4553365, a: 1}
   m_BuildTextureStacks: []
