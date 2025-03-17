@@ -255,11 +255,9 @@ public class SoundManager : MonoBehaviour
     {
         switch (sceneName)
         {
-            case "HMJ_Map":
+            case "TitleScene":
                 return bgmClips[0];
-            case "HMJ_Test":
-                return bgmClips[1];
-            case "Test_KYH":
+            case "YGM_Maptwo":
                 return bgmClips[1];
             default:
                 return null;
