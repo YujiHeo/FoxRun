@@ -7,14 +7,10 @@ public class EnviromentSetting : MonoBehaviour
 {
     [Header("MainEnvironment")]
     public GameObject mainEnvironments;
-    public GameObject blossomEff;
-    public GameObject rainEff;
 
     [Header("SnowEnvironment")]
     public List<Transform> snowEnviroment;
     public GameObject snowEnvironments;
-    public GameObject snowEff;
-    public GameObject snowppEff;
 
     [Header("SnowEnvironment.Position")]
     public float moveSpeed;
