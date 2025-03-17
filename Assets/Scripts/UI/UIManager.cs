@@ -218,7 +218,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         ChangeState(UIState.Lobby);
-        SceneManager.LoadScene("Test_KYH");
+        SceneManager.LoadScene("TitleScene");
     }
 
     //Setting 내부
@@ -238,7 +238,7 @@ public class UIManager : MonoBehaviour
     public void OnClickGameOverLobby()
     {
         ChangeState(UIState.Lobby);
-        SceneManager.LoadScene("Test_KYH");
+        SceneManager.LoadScene("TitleScene");
     }
 
     //Achievement 내부

@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/YGM_Map.unity
     guid: d381215f968a07c4fb811bb5c78c298e
+  - enabled: 1
+    path: Assets/Scenes/YGM_Maptwo.unity
+    guid: c0cc83bf9cb883845a2f1c9376d8d617
   m_configObjects: {}
