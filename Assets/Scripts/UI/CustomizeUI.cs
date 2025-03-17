@@ -42,6 +42,7 @@ public class CustomizeUI : BaseUI
         BSlider.value = loadColor.b;
 
         UpdateColor();
+        foxMaterial.color = DataManager.Instance.LoadColor();
     }
 
     public void OnClickCustomizeLobbyButton()
