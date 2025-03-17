@@ -10,12 +10,8 @@ public class InvincibleItem : Item
 
     protected override void ApplyEffect(PlayerCondition player)
     {
-        player.isInvincibleTime = true;
-        PlayerCondition.isMagnet = true;
-
-
         GameManager.instance.AddScore(scoreValue);
 
-        player.StartCoroutine(player.StartInvincibleTime(player, duration));
+        player.StartInvin(duration);
     }
 }
