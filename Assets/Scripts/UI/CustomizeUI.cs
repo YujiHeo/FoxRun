@@ -11,6 +11,7 @@ public class CustomizeUI : BaseUI
     public Slider GSlider;
     public Slider BSlider;
     public Image foxImage;
+    public Material foxMaterial;
     protected override UIState GetUIState()
     {
         return UIState.Customize;
@@ -61,6 +62,7 @@ public class CustomizeUI : BaseUI
 
         // 저장 버튼 클릭 시 PlayerPrefs에 현재 Color값 저장
         DataManager.Instance.SaveColor(foxImage.color);
+        foxMaterial.color = DataManager.Instance.LoadColor();
     }
 
     public void UpdateColor()
