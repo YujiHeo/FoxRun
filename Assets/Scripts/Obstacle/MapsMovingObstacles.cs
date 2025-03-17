@@ -34,8 +34,7 @@ public class MapsMovingObstacles : MonoBehaviour
         for(int i = 0; i < movingObjetctsCount; i++)
         {
              temptObject = objectResource.GetRandomObjectFromChildren(resourceName.ToString());
-             temptObject.transform.SetParent(this.transform);
-            //movingObjects[i].transform.SetParent(this.transform);         
+             temptObject.transform.SetParent(this.transform);  
         }
 
         StartCoroutine(SpawnObstacleRoutine());
@@ -52,17 +51,8 @@ public class MapsMovingObstacles : MonoBehaviour
             {
                 if (movingObjects[i].transform.position.z <= resetZ) // 리셋 위치 확인
                 {
-                    if (resourceName == ResourceName.Item)
-                    {
-                        movingObjects[i].GetComponent<MeshRenderer>().enabled = false;
-                        movingObjects.RemoveAt(i);
-
-                    }
-                    else
-                    {
-                        movingObjects[i].SetActive(false);
-                        movingObjects.RemoveAt(i);
-                    }
+                    movingObjects[i].SetActive(false);
+                    movingObjects.RemoveAt(i);
                 }
             }
 
@@ -163,14 +153,14 @@ public class MapsMovingObstacles : MonoBehaviour
     private void SelectItmeMethod(List<GameObject> _selectIteList,Vector3 _spawnPosition, string _itemName)
     {
         GameObject selectItem = null;
-        //MeshRenderer meshRenderer = null;
+
 
         for (int i = 0; i < inactiveObjects.Count; i++)
         {
             if (inactiveObjects[i].name.Contains(_itemName))
             {
                 selectItem = inactiveObjects[i];
-                //meshRenderer = selectItem.GetComponent<MeshRenderer>();
+
                 break;
             }
         }
@@ -190,7 +180,6 @@ public class MapsMovingObstacles : MonoBehaviour
                 if (inactiveObjects[i].name.Contains(_itemName))
                 {
                     selectItem = inactiveObjects[i];
-                    //meshRenderer = selectItem.GetComponent<MeshRenderer>();
                     break;
                 }
             }
@@ -198,7 +187,6 @@ public class MapsMovingObstacles : MonoBehaviour
 
         selectItem.transform.position = _spawnPosition;
         selectItem.gameObject.SetActive(true);
-        //meshRenderer.enabled = true;
         movingObjects.Add(selectItem);
 
     }
