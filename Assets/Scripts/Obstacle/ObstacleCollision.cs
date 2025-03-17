@@ -24,6 +24,7 @@ public class ObstacleCollision : MonoBehaviour
 
             if (player.condition.isInvincibleTime)
             {
+
                 Vector3 randomDirection = new Vector3(
                     Random.Range(-1f, 1f),  // X축 랜덤 값
                     Random.Range(0.2f, 1f), // Y축은 너무 낮으면 안 떠오르므로 최소값 설정
@@ -38,7 +39,7 @@ public class ObstacleCollision : MonoBehaviour
                     Random.Range(-1f, 1f),
                     Random.Range(-1f, 1f),
                     Random.Range(-1f, 1f)
-                ) * 50f; // 회전 힘의 크기 조절
+                ) * 10f; // 회전 힘의 크기 조절
 
                 rigidbodyObstacle.AddTorque(randomTorque, ForceMode.Impulse);
 

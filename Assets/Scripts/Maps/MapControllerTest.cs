@@ -61,13 +61,13 @@ public class MapControllerTest : MonoBehaviour
         while (true)
         {
             treeObjects.resourceName = ResourceName.Spring;
-            yield return new WaitForSeconds(backgroundChangeTimeGap*Time.deltaTime);
+            yield return new WaitForSeconds(backgroundChangeTimeGap);
             treeObjects.resourceName = ResourceName.Summer;
-            yield return new WaitForSeconds(backgroundChangeTimeGap*Time.deltaTime);
+            yield return new WaitForSeconds(backgroundChangeTimeGap);
             treeObjects.resourceName = ResourceName.Fall;
-            yield return new WaitForSeconds(backgroundChangeTimeGap * Time.deltaTime);
+            yield return new WaitForSeconds(backgroundChangeTimeGap);
             treeObjects.resourceName = ResourceName.Winter;
-            yield return new WaitForSeconds(backgroundChangeTimeGap * Time.deltaTime);
+            yield return new WaitForSeconds(backgroundChangeTimeGap);
         }
     }
 
