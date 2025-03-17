@@ -15,11 +15,13 @@ public class DayNightCycle : MonoBehaviour
     public Light sun;
     public Gradient sunColor;
     public AnimationCurve sunIntensity;
+    public Material dayMat;
 
     [Header("Moon")]
     public Light moon;
     public Gradient moonColor;
     public AnimationCurve moonIntensity;
+    public Material nightMat;
 
     [Header("Other Lighting")]
     public AnimationCurve lightingIntensityMultiplier;
@@ -30,16 +32,10 @@ public class DayNightCycle : MonoBehaviour
 
     private float skyRotation;
 
-    private ControlSky controlSky;
-
     private void Start()
     {
-        controlSky = GetComponent<ControlSky>();
-
         timeRate = 1.0f / fullDayLength;
-        time = startTime;
-
-        
+        time = startTime;     
     }
 
     private void Update()
@@ -81,12 +77,12 @@ public class DayNightCycle : MonoBehaviour
         if(lightSource == sun)
         {
             spoot.gameObject.SetActive(false);
-            controlSky.SetDaySky();
+            RenderSettings.skybox = dayMat;
         }
         else
         {
             spoot.gameObject.SetActive(true);
-            controlSky.SetNightSky();
+            RenderSettings.skybox = nightMat;
         }
     }
 }
