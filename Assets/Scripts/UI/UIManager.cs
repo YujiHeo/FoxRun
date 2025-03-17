@@ -14,7 +14,8 @@ public enum UIState
     Pause, //3
     GameOver, //4
     Setting, //5
-    Achievement //6
+    Achievement, //6
+    Customize //7
 }
 
 public enum CharacterState
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
     SettingUI settingUI = null;
     AchievementUI achievementUI = null;
     AchievementPopUpUI achievementPopUpUI = null;
+    CustomizeUI customizeUI = null;
 
     public bool uISceneCameraPlay = false;
 
@@ -87,6 +89,8 @@ public class UIManager : MonoBehaviour
         achievementUI?.Init(this);
         achievementPopUpUI = GetComponentInChildren<AchievementPopUpUI>(true);
         achievementPopUpUI?.Init(this);
+        customizeUI = GetComponentInChildren<CustomizeUI>(true);
+        customizeUI?.Init(this);
 
         ChangeState(UIState.Title);
 
@@ -103,6 +107,7 @@ public class UIManager : MonoBehaviour
         gameOverUI?.SetActive(currentState);
         settingUI?.SetActive(currentState);
         achievementUI?.SetActive(currentState);
+        customizeUI?.SetActive(currentState);
     }
 
 
@@ -169,7 +174,7 @@ public class UIManager : MonoBehaviour
     {
         ChangeState(UIState.Game); //타이틀Ui로 복귀
 
-        SceneManager.LoadScene("YGM_Map");
+        SceneManager.LoadScene("YGM_Maptwo");
 
         AchivementManager.instance.SignAchivement(00); //첫플레이 도전과제 달성용
 
