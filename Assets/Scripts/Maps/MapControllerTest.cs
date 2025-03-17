@@ -17,6 +17,7 @@ public class MapControllerTest : MonoBehaviour
     [Range(30, 100)] public float moveSpeed;
     [Range(0.1f, 1f)] public float spawnGap;
     [Range(0, 1)] public float addmoveSpeed;
+    public ParticleSystem[] seasonPartcle;
 
 
     private void Awake()
@@ -61,12 +62,20 @@ public class MapControllerTest : MonoBehaviour
         while (true)
         {
             treeObjects.resourceName = ResourceName.Spring;
+            seasonPartcle[3].Stop();
+            seasonPartcle[0].Play();
             yield return new WaitForSeconds(backgroundChangeTimeGap);
             treeObjects.resourceName = ResourceName.Summer;
+            seasonPartcle[0].Stop();
+            seasonPartcle[1].Play();
             yield return new WaitForSeconds(backgroundChangeTimeGap);
             treeObjects.resourceName = ResourceName.Fall;
+            seasonPartcle[1].Stop();
+            seasonPartcle[2].Play();
             yield return new WaitForSeconds(backgroundChangeTimeGap);
             treeObjects.resourceName = ResourceName.Winter;
+            seasonPartcle[2].Stop();
+            seasonPartcle[3].Play();
             yield return new WaitForSeconds(backgroundChangeTimeGap);
         }
     }

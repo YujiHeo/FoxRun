@@ -20,10 +20,10 @@ public class ItemEffect : MonoBehaviour
             {
                 GameObject effectInstance = PlayEffect();
 
-                if (effectInstance != null)
-                {
-                    Destroy(effectInstance, destroyDelay);
-                }
+                //if (effectInstance != null)
+                //{
+                //    Destroy(effectInstance, destroyDelay);
+                //}
             }
         }
     }
