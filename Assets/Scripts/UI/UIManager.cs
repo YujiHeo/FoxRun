@@ -193,6 +193,11 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.Achievement);
     }
 
+    public void OnClickCustomize()
+    {
+        ChangeState(UIState.Customize);
+    }
+
     //Game 내부
     
     public void OnClickPause()
@@ -239,6 +244,13 @@ public class UIManager : MonoBehaviour
     //Achievement 내부
 
     public void OnClickAchievementLobby()
+    {
+        ChangeState(UIState.Lobby);
+    }
+
+    //Customize내부
+
+    public void OnClickCustomizeLobby()
     {
         ChangeState(UIState.Lobby);
     }
