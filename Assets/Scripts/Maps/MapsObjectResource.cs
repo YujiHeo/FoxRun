@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TreeEditor;
 using UnityEngine;
 
@@ -22,7 +23,7 @@ public class MapsObjectResource : MonoBehaviour
     public ResourceName resourceFileName;
     private Dictionary<string, GameObject> ObjectPrefabs;
     Transform objectTranform;
-    List<Transform> filteredObjects = new List<Transform>(); // 특정 키워드를 포함하는 자식 오브젝트 리스트
+    List<Transform> filteredObjects = new List<Transform>();
     Transform randomObject;
 
     private void Awake()
@@ -82,7 +83,11 @@ public class MapsObjectResource : MonoBehaviour
 
         if (filteredObjects.Count == 0)
         {
-            LoadObjects(filterKeyword);
+            if(!ObjectPrefabs.Keys.Any(key => key.Contains(filterKeyword)))
+            {
+               LoadObjects(filterKeyword);
+            }
+
             SaveObjects();
 
             foreach (Transform child in objectTranform)
