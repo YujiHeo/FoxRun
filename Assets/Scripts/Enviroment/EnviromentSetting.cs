@@ -20,6 +20,7 @@ public class EnviromentSetting : MonoBehaviour
     public float moveSpeed;
     public Vector3 lastPosition;
 
+    private bool setWinter = false;
     void Start()
     {
         //lastPosition = snowEnviroment.OrderByDescending(obj => obj.transform.position.z).First().transform.position;
@@ -44,19 +45,12 @@ public class EnviromentSetting : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < snowEnviroment.Count; i++)
+        if(setWinter)
         {
-            snowEnviroment[i].transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            SetMainEnvironment();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            SetSnowEnvironment();
+            for (int i = 0; i < snowEnviroment.Count; i++)
+            {
+                snowEnviroment[i].transform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
+            }
         }
     }
 
@@ -69,11 +63,13 @@ public class EnviromentSetting : MonoBehaviour
     {
         snowEnvironments.SetActive(false);
         mainEnvironments.SetActive(true);
+        setWinter = false;
     }
 
     public void SetSnowEnvironment()
     {
         snowEnvironments.SetActive(true);
         mainEnvironments.SetActive(false);
+        setWinter = true;
     }
 }

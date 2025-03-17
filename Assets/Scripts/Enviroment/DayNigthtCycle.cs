@@ -35,7 +35,7 @@ public class DayNightCycle : MonoBehaviour
     private void Start()
     {
         timeRate = 1.0f / fullDayLength;
-        time = startTime;     
+        time = startTime;
     }
 
     private void Update()
@@ -50,7 +50,6 @@ public class DayNightCycle : MonoBehaviour
 
         RenderSettings.ambientIntensity = lightingIntensityMultiplier.Evaluate(time);
         RenderSettings.reflectionIntensity = reflectionIntensityMultiplier.Evaluate(time);
-
     }
 
     void UpdateLighting(Light lightSource, Gradient colorGradiant, AnimationCurve intensityCurve)
@@ -63,13 +62,17 @@ public class DayNightCycle : MonoBehaviour
 
         GameObject go = lightSource.gameObject;
         if (lightSource.intensity == 0 && go.activeInHierarchy)
+        {
             go.SetActive(false);
+
+        }
         else if (lightSource.intensity > 0 && !go.activeInHierarchy)
         {
             go.SetActive(true);
             DayORNight(lightSource);
+            RenderSettings.fogColor = lightSource.color;
+        }
 
-        } 
     }
 
     void DayORNight(Light lightSource)

@@ -18,6 +18,7 @@ public class MapControllerTest : MonoBehaviour
     [Range(0.1f, 1f)] public float spawnGap;
     [Range(0, 1)] public float addmoveSpeed;
 
+    private EnviromentSetting setting;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class MapControllerTest : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<Player>();
+        setting = GetComponentInChildren<EnviromentSetting>();
 
         StartCoroutine(ChangeColorRoutine());
     }
@@ -61,12 +63,14 @@ public class MapControllerTest : MonoBehaviour
         while (true)
         {
             treeObjects.resourceName = ResourceName.Spring;
+            setting.SetMainEnvironment();
             yield return new WaitForSeconds(backgroundChangeTimeGap);
             treeObjects.resourceName = ResourceName.Summer;
             yield return new WaitForSeconds(backgroundChangeTimeGap);
             treeObjects.resourceName = ResourceName.Fall;
             yield return new WaitForSeconds(backgroundChangeTimeGap);
             treeObjects.resourceName = ResourceName.Winter;
+            setting.SetSnowEnvironment();
             yield return new WaitForSeconds(backgroundChangeTimeGap);
         }
     }
