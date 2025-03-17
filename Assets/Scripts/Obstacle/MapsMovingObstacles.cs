@@ -117,7 +117,7 @@ public class MapsMovingObstacles : MonoBehaviour
     {
         if (movingObjects.Contains(_object)) // 리스트에 있는지 확인
         {
-            _object.transform.position = Vector3.zero;
+            _object.transform.position = new Vector3(0f,0f, spawnZ);
             movingObjects.Remove(_object); // 리스트에서 제거
             _object.SetActive(false); // 비활성화 처리
         }
