@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     Player _player;
     public Player player { get => _player; set => _player = value; }
 
-    public int Score { get; private set; } //아이템 획득시 점수
+    public int Score { get; set; } //아이템 획득시 점수
 
 
     void Awake()

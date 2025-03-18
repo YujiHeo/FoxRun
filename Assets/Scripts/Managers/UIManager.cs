@@ -177,6 +177,7 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("YGM_Maptwo");
 
         AchivementManager.instance.SignAchivement(00); //첫플레이 도전과제 달성용
+        GameManager.instance.Score = 0;
         gameUI.invincibilityDuration = 0;
         gameUI.feverDuration = 0; //게임초기화용
 
