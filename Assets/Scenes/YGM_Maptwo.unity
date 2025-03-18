@@ -2677,7 +2677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70aabafbc98ee2f449cf56fac6988c4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceFileName: 0
+  resourceFileName: 4
 --- !u!33 &5627248605032696721
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3091,7 +3091,7 @@ MonoBehaviour:
   buildingCount: 10
   resetPositionZ: -50
   startPositionZ: 20
-  resourceName: 0
+  resourceName: 4
 --- !u!1 &9207779263574748822
 GameObject:
   m_ObjectHideFlags: 0
