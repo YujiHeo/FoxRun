@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MapControllerTest : MonoBehaviour
@@ -17,7 +18,7 @@ public class MapControllerTest : MonoBehaviour
     [Range(30, 100)] public float moveSpeed;
     [Range(0.1f, 1f)] public float spawnGap;
     [Range(0, 1)] public float addmoveSpeed;
-    public ParticleSystem[] seasonPartcle;
+    public List<GameObject> seasonPartcle;
     public EnviromentSetting enviromentSetting;
 
     private void Awake()
@@ -64,27 +65,49 @@ public class MapControllerTest : MonoBehaviour
         while (true)
         {
             treeObjects.resourceName = ResourceName.Spring;
-            seasonPartcle[3].Stop();
-            seasonPartcle[0].Play();
+            MapEffectMethod(treeObjects.resourceName);
             enviromentSetting.SetMainEnvironment();
             yield return new WaitForSeconds(backgroundChangeTimeGap);
+
             treeObjects.resourceName = ResourceName.Summer;
-            seasonPartcle[0].Stop();
-            seasonPartcle[1].Play();
+            MapEffectMethod(treeObjects.resourceName);
             yield return new WaitForSeconds(backgroundChangeTimeGap);
+
             treeObjects.resourceName = ResourceName.Fall;
-            seasonPartcle[1].Stop();
-            seasonPartcle[2].Play();
+            MapEffectMethod(treeObjects.resourceName);
             yield return new WaitForSeconds(backgroundChangeTimeGap);
+
             treeObjects.resourceName = ResourceName.Winter;
-            seasonPartcle[2].Stop();
-            seasonPartcle[3].Play();
+            MapEffectMethod(treeObjects.resourceName);
             enviromentSetting.SetSnowEnvironment();
             yield return new WaitForSeconds(backgroundChangeTimeGap);
         }
     }
 
+    private void MapEffectMethod(ResourceName _resourceName)
+    {
+        int seasonIndex = (int)_resourceName; // ResourceName의 Enum 값(0~3)을 인덱스로 사용
+        int prevIndex = (seasonIndex == 0) ? 3 : seasonIndex - 1; // 이전 계절 인덱스 (Spring → Winter 예외처리)
 
+        SetSeasonParticles(prevIndex, seasonIndex);
+    }
+
+
+    private void SetSeasonParticles(int stopIndex, int playIndex)
+    {
+        foreach (ParticleSystem effect in seasonPartcle[stopIndex].GetComponentsInChildren<ParticleSystem>())
+        {
+            effect.Stop();
+        }
+        foreach (ParticleSystem effect in seasonPartcle[playIndex].GetComponentsInChildren<ParticleSystem>())
+        {
+            effect.Play();
+        }
+    }
+
+
+
+}
 
 
 
@@ -109,5 +132,3 @@ public class MapControllerTest : MonoBehaviour
     //    }
     //}
 
-
-}

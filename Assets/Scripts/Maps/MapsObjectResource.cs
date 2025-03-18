@@ -7,11 +7,11 @@ using UnityEngine;
 
 public enum ResourceName
 {
-    Building,
     Spring,
     Summer,
     Fall,
     Winter,
+    Building,
     Vehicle,
     Item,
     Props
@@ -69,9 +69,9 @@ public class MapsObjectResource : MonoBehaviour
     }
 
 
-    public GameObject GetRandomObjectFromChildren(string filterKeyword)
+    public GameObject GetRandomObjectFromChildren(string filterKeyword) // 오브젝트 부족하면 추가해주는 매서드
     {
-        filteredObjects.Clear();
+        filteredObjects.Clear(); // 리스트 초기화
 
         foreach (Transform child in objectTranform)
         {
@@ -79,7 +79,7 @@ public class MapsObjectResource : MonoBehaviour
             {
                 filteredObjects.Add(child);
             }
-        }
+        } // 하위에 오브젝트 키워드에 해당한 오브젝트 있는지 확인
 
         if (filteredObjects.Count == 0)
         {
@@ -98,7 +98,7 @@ public class MapsObjectResource : MonoBehaviour
                 }
             }
 
-        }
+        } // 없으면 새로 Resource 폴더에서 가져오기
 
         // 랜덤으로 하나 선택
         randomObject = filteredObjects[Random.Range(0, filteredObjects.Count)];

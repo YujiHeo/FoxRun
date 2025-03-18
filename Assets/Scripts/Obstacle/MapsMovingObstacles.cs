@@ -77,7 +77,7 @@ public class MapsMovingObstacles : MonoBehaviour
 
     private void RandomObstacle(float _sapwY, string _typeName)
     {
-        inactiveObjects.Clear();
+        inactiveObjects.Clear(); // 이전에 활성화된 리스트 초기화
 
         foreach (Transform ob in this.transform)
         {
@@ -85,8 +85,7 @@ public class MapsMovingObstacles : MonoBehaviour
             {
                 inactiveObjects.Add(ob.gameObject);
             }
-        }
-
+        } // 활성화된 오브젝트로 리스트 재정리
 
         if (inactiveObjects.Count == 0)
         {
@@ -97,13 +96,11 @@ public class MapsMovingObstacles : MonoBehaviour
 
                 inactiveObjects.Add(_newObjects);
             }
-        }
+        } // 없으면 다시 불러오기
 
         int indexPosition = Random.Range(0, spawnX.Count); // 3가지 길 중 랜덤 인덱스 선택
         float _spawnX = spawnX[indexPosition]; // 선택된 랜덤 위치 선정
-
         Vector3 spawnPosition = new Vector3(_spawnX, _sapwY, spawnZ); // 최종 위치 결정
-
 
         if (_typeName == ResourceName.Item.ToSafeString())
         {
@@ -124,7 +121,7 @@ public class MapsMovingObstacles : MonoBehaviour
             }
 
 
-        }
+        } // 아이템 타입에 따른 확률 뽑기
         else
         {
             int index = Random.Range(0, inactiveObjects.Count); // 장애물 리스트에서 랜덤으로 인덱스 선택
@@ -132,8 +129,7 @@ public class MapsMovingObstacles : MonoBehaviour
             newObstacle.transform.position = spawnPosition;
             newObstacle.gameObject.SetActive(true);
             movingObjects.Add(newObstacle);
-        }
-
+        } // 그 외 장애물 리스트에서 랜덤으로 뽑기
     }
 
     public void ReleaseObject(GameObject _object)
