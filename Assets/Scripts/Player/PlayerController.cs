@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
         anim.SetTrigger("Jump");
         AchivementManager.instance.SignAchivement(01);
         AchivementManager.instance.SignAchivement(02);
+        SoundManager.Instance.PlaySFX("DM-CGS-07", transform.position); //»ç¿îµå
     }
 
     public void OnSlide(InputAction.CallbackContext context)

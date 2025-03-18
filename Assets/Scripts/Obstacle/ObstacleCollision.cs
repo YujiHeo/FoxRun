@@ -22,8 +22,10 @@ public class ObstacleCollision : MonoBehaviour
             var player = other.transform.GetComponent<Player>();
             Renderer playerRenderer = player.GetComponentInChildren<Renderer>();
 
+
             if (player.condition.isInvincibleTime)
             {
+                SoundManager.Instance.PlaySFX("DM-CGS-46", transform.position);
 
                 Vector3 randomDirection = new Vector3(
                     Random.Range(-1f, 1f),  // XÃà ·£´ý °ª
@@ -49,6 +51,7 @@ public class ObstacleCollision : MonoBehaviour
             {
                 playerRenderer.material.color = blinkColor;
                 player.condition.GetDamage(1);
+                SoundManager.Instance.PlaySFX("DM-CGS-34", transform.position);
             }
 
         }

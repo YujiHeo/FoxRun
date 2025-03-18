@@ -11,6 +11,6 @@ public class CommonItem : Item
     {
 
         GameManager.instance.AddScore(scoreValue);
-
+        SoundManager.Instance.PlaySFX("DM-CGS-21", transform.position); //»ç¿îµå
     }
 }

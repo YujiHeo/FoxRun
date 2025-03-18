@@ -16,5 +16,7 @@ public class FeverItem : Item
         GameManager.instance.feverTimeScore = 2;
 
         player.StartCoroutine(player.StartFeverTime(player, duration));
+        UIManager.instance.UpdateFeverDuration(duration); //UI
+        SoundManager.Instance.PlaySFX("DM-CGS-26", transform.position); //»ç¿îµå
     }
 }

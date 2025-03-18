@@ -10,8 +10,13 @@ public class GameUI : BaseUI
     public Button pauseButton;
     public TextMeshProUGUI scoreText;
     public Image[] heartImages = new Image[3];
+    public GameObject feverIndicator;
+    public Image feverGauge;
+    public GameObject invincibilityIndicator;
+    public Image invincibilityGauge;
 
-
+    public float feverDuration;
+    public float invincibilityDuration;
 
     protected override UIState GetUIState()
     {
@@ -25,12 +30,37 @@ public class GameUI : BaseUI
         testButton.onClick.AddListener(OnClickLobbyButton);
         pauseButton.onClick.AddListener(OnClickPauseButton);
 
+        feverDuration = 0;
+        invincibilityDuration = 0;
     }
 
     public void FixedUpdate() //수시로 HP 정보와 Score 정보 업데이트
     {
         UpdateScoreInfo();
         UpdateHpInfo();
+
+        if(feverDuration > 0.1f)
+        {
+            feverIndicator.SetActive(true);
+            feverDuration -= Time.deltaTime;
+            UpdateFeverGauge();
+        }else
+        {
+            feverIndicator.SetActive(false);
+        }
+
+        if (invincibilityDuration > 0.1f)
+        {
+            invincibilityIndicator.SetActive(true);
+            invincibilityDuration -= Time.deltaTime;
+            UpdateinvincibilityGauge();
+        }
+        else
+        {
+            invincibilityIndicator.SetActive(false);
+        }
+
+
     }
 
     public void OnClickLobbyButton()
@@ -76,6 +106,26 @@ public class GameUI : BaseUI
             } // 모든 hp를 검은색으로 칠해라
         }
 
+    }
+
+    public void UpdateFeverDuration(float _duration)
+    {
+        feverDuration = _duration;
+    }
+
+    public void UpdateFeverGauge()
+    {
+        feverGauge.fillAmount = feverDuration / 5.0f;
+    }
+
+    public void UpdateInvincibilityDuration(float _duration)
+    {
+        invincibilityDuration = _duration;
+    }
+
+    public void UpdateinvincibilityGauge()
+    {
+        invincibilityGauge.fillAmount = invincibilityDuration / 5.0f;
     }
 
 }
