@@ -7,20 +7,16 @@ public class EnviromentSetting : MonoBehaviour
 {
     [Header("MainEnvironment")]
     public GameObject mainEnvironments;
-    public GameObject blossomEff;
-    public GameObject rainEff;
 
     [Header("SnowEnvironment")]
     public List<Transform> snowEnviroment;
     public GameObject snowEnvironments;
-    public GameObject snowEff;
-    public GameObject snowppEff;
 
     [Header("SnowEnvironment.Position")]
     public float moveSpeed;
     public Vector3 lastPosition;
 
-    private bool setWinter = false;
+    public bool setWinter = false;
     void Start()
     {
         //lastPosition = snowEnviroment.OrderByDescending(obj => obj.transform.position.z).First().transform.position;
