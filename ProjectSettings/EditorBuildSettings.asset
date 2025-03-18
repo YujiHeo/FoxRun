@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Test_KGS.unity
-    guid: b15bcaa32094b2f4e88929baee830d43
-  - enabled: 1
-    path: Assets/Scenes/YGM_Map.unity
-    guid: d381215f968a07c4fb811bb5c78c298e
+    path: Assets/Scenes/TitleScene.unity
+    guid: 5e0ab627d20df49418eea75cb5c3ec77
   - enabled: 1
     path: Assets/Scenes/YGM_Maptwo.unity
     guid: c0cc83bf9cb883845a2f1c9376d8d617
