@@ -206,6 +206,11 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.Pause);
     }
 
+    public void UpdateFeverDuration(float _duration)
+    {
+        gameUI.UpdateFeverDuration(_duration);
+    }
+
     //Pause ³»ºÎ
 
     public void OnClickBack()

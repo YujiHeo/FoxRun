@@ -16,5 +16,6 @@ public class FeverItem : Item
         GameManager.instance.feverTimeScore = 2;
 
         player.StartCoroutine(player.StartFeverTime(player, duration));
+        UIManager.instance.UpdateFeverDuration(duration);
     }
 }
