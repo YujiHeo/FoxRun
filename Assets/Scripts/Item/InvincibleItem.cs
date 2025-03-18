@@ -13,6 +13,7 @@ public class InvincibleItem : Item
         GameManager.instance.AddScore(scoreValue);
 
         player.StartInvin(duration);
-        UIManager.instance.UpdateInvincibilityDuration(duration);
+        UIManager.instance.UpdateInvincibilityDuration(duration); //UI
+        SoundManager.Instance.PlaySFX("DM-CGS-26", transform.position); //»ç¿îµå
     }
 }

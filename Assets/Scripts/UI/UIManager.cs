@@ -177,6 +177,8 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("YGM_Maptwo");
 
         AchivementManager.instance.SignAchivement(00); //첫플레이 도전과제 달성용
+        gameUI.invincibilityDuration = 0;
+        gameUI.feverDuration = 0; //게임초기화용
 
     }
 
@@ -243,6 +245,7 @@ public class UIManager : MonoBehaviour
     {
         gameOverUI.SetScoreText();
         ChangeState(UIState.GameOver);
+        SoundManager.Instance.PlaySFX("DM-CGS-27", transform.position);
     }
 
     public void OnClickGameOverLobby()
