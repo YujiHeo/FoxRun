@@ -13,5 +13,6 @@ public class InvincibleItem : Item
         GameManager.instance.AddScore(scoreValue);
 
         player.StartInvin(duration);
+        UIManager.instance.UpdateInvincibilityDuration(duration);
     }
 }

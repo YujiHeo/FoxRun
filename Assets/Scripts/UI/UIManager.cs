@@ -211,6 +211,11 @@ public class UIManager : MonoBehaviour
         gameUI.UpdateFeverDuration(_duration);
     }
 
+    public void UpdateInvincibilityDuration(float _duration)
+    {
+        gameUI.UpdateInvincibilityDuration(_duration);
+    }
+
     //Pause ³»ºÎ
 
     public void OnClickBack()
