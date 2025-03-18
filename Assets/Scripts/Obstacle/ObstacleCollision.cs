@@ -69,7 +69,7 @@ public class ObstacleCollision : MonoBehaviour
         {
             var player = other.transform.GetComponent<Player>();
             Renderer playerRenderer = player.GetComponentInChildren<Renderer>();
-            playerRenderer.material.color = Color.white;
+            playerRenderer.material.color = DataManager.Instance.LoadColor();
 
 
         }
