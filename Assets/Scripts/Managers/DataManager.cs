@@ -33,7 +33,7 @@ public class DataManager : MonoBehaviour
             return;
         }
 
-        Debug.Log($"{color.r}, {color.g}, {color.b} 색상을 저장했습니다.");
+        //Debug.Log($"{color.r}, {color.g}, {color.b} 색상을 저장했습니다.");
     }
 
     // Color값 불러오기
@@ -50,7 +50,7 @@ public class DataManager : MonoBehaviour
             // 키를 사용해 불러온 Hex 코드 문자열값을 Color 값으로 변환에 성공한다면 true를 반환하며 loadedColor에 값을 넣어줌
             if (ColorUtility.TryParseHtmlString("#" + loadedColorStirng, out loadedColor))
             {
-                Debug.Log($"{loadedColor.r}, {loadedColor.g}, {loadedColor.b} 색상을 불러왔습니다.");
+                //Debug.Log($"{loadedColor.r}, {loadedColor.g}, {loadedColor.b} 색상을 불러왔습니다.");
                 return loadedColor;
             }
         }

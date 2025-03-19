@@ -85,7 +85,7 @@ public class PlayerCondition : MonoBehaviour
 
     public IEnumerator StartInvincibleTime(PlayerCondition player, float duration)
     {
-        Debug.Log("무적이 되었습니다!");
+        //Debug.Log("무적이 되었습니다!");
 
         //float originalSpeed = speed;
 
@@ -97,6 +97,6 @@ public class PlayerCondition : MonoBehaviour
 
         PlayerCondition.isMagnet = false;
         player.isInvincibleTime = false;
-        Debug.Log("무적 끝!!");
+        //Debug.Log("무적 끝!!");
     }
 }

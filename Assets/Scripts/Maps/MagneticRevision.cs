@@ -39,6 +39,7 @@ public class MagneticRevision : MonoBehaviour
             if (PlayerCondition.isMagnet && item != null)
             {
                 float distance = Vector3.Distance(transform.position, item.transform.position);
+                
 
                 if (distance <= magnetDistance)
                 {
